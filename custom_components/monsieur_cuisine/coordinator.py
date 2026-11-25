@@ -25,6 +25,7 @@ from .const import (
     PLANNER_WINDOW_DAYS,
     UPDATE_INTERVAL,
 )
+from .mcbridge.authoring import OWN_STATUSES
 from .mcbridge.client import McApiError, McAuthError, McClient
 from .mcbridge.grpcstatus import GRPC_HOST, DeviceStatus, stream_device_status
 from .mcbridge.status import DeviceLiveStatus, decode_status
@@ -40,7 +41,7 @@ class McCoordinator(DataUpdateCoordinator[dict[str, Any]]):
     async def _async_update_data(self) -> dict[str, Any]:
         try:
             devices = await self.client.get_devices()
-            recipes = await self.client.list_own_recipes(size=1)
+            recipes = await self.client.list_own_recipes(size=1, statuses=OWN_STATUSES)
         except McAuthError as err:
             raise ConfigEntryAuthFailed(str(err)) from err
         except McApiError as err:
