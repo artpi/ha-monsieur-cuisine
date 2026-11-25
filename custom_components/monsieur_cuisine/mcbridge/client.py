@@ -2,19 +2,13 @@
 
 Inoffiziell, keine Verbindung zu Lidl oder Tecpal. Nur für das eigene Konto,
 schonende Abstände zwischen den Aufrufen.
-
-Stand der Verifikation (11.10.2026):
-  ✔ Pfade und Formate aller Methoden (Website-Proxy bzw. App-Mitschnitt)
-  ✔ Token-Erneuerung POST /sso/token (grant_type=refresh_token)
-  ✘ Erstanmeldung mit E-Mail/Passwort – noch nicht mitgeschnitten
-  ✘ Welcher Token im Authorization-Header steht (Access-Token oder App-JWT)
 """
 from __future__ import annotations
 
 import asyncio
 import time
 import uuid
-from typing import Any, Awaitable, Callable
+from typing import Any, Awaitable, Callable, Iterable
 
 import aiohttp
 
@@ -22,6 +16,10 @@ API_BASE = "https://mc-api.tecpal.com"
 CLIENT_ID = "monsieurcuisineappcompanionclient"
 USER_AGENT = "ha-monsieur-cuisine (inoffiziell)"
 MIN_INTERVAL_S = 1.0
+TIMEOUT = aiohttp.ClientTimeout(total=30)
+# Image processing after the upload
+MEDIA_READY = "3"
+MEDIA_ATTEMPTS = 20
 
 
 class McApiError(Exception):
@@ -99,11 +97,12 @@ class JwtAuth:
             return self.access_token  # type: ignore[return-value]
 
     async def _refresh(self) -> None:
-        from .auth import McAuthError, refresh_jwt
+        from .auth import McAuthError as RefreshError, refresh_jwt
         try:
             new = await refresh_jwt(self._session, self.jwt)
-        except McAuthError as err:
-            raise McAuthError(str(err)) from err
+        except RefreshError as err:
+            # The client's error type: only that one starts a new sign-in.
+            raise McAuthError(401, None, str(err)) from err
         self.jwt = new
         self.access_token = new
         if self._on_refresh:
@@ -113,13 +112,13 @@ class JwtAuth:
 
 
 class McClient:
-    def __init__(self, session: aiohttp.ClientSession, auth: "TokenAuth | JwtAuth", language: str = "de-DE"):
+    def __init__(self, session: aiohttp.ClientSession, auth: TokenAuth | JwtAuth, language: str = "de-DE"):
         self._session = session
         self._auth = auth
-        self._language = language
+        self.language = language
         self._last_call = 0.0
 
-    async def _request(self, method: str, path: str, *, params: dict | None = None,
+    async def _request(self, method: str, path: str, *, params: Any = None,
                        json: Any = None, retry_auth: bool = True) -> Any:
         wait = MIN_INTERVAL_S - (time.monotonic() - self._last_call)
         if wait > 0:
@@ -127,22 +126,27 @@ class McClient:
         self._last_call = time.monotonic()
         headers = {
             "authorization": f"Bearer {await self._auth.token()}",
-            "accept-language": self._language,
+            "accept-language": self.language,
             "x-request-id": str(uuid.uuid4()),
             "content-type": "application/json",
             "user-agent": USER_AGENT,
+            # Without it the API leaves out ingredient names of catalogue recipes.
+            "device-type": "android",
         }
         async with self._session.request(method, f"{API_BASE}/{path.lstrip('/')}", params=params,
-                                         json=json, headers=headers) as resp:
+                                         json=json, headers=headers, timeout=TIMEOUT) as resp:
             body = await resp.json(content_type=None)
-        if resp.status == 401 and retry_auth:
+        message = body.get("message", "") if isinstance(body, dict) else str(body)
+        # The API also uses 403 for rejected input, so the status alone does not
+        # say whether the session is the problem.
+        expired = resp.status == 401 or (resp.status >= 400 and "token expired" in message.lower())
+        if expired and retry_auth:
             self._auth.access_token = None
             return await self._request(method, path, params=params, json=json, retry_auth=False)
         if resp.status >= 400 or (isinstance(body, dict) and body.get("code") not in (0, None)):
-            err = McAuthError if resp.status in (401, 403) else McApiError
-            raise err(resp.status, body.get("code") if isinstance(body, dict) else None,
-                      body.get("message", "") if isinstance(body, dict) else str(body),
-                      body.get("data") if isinstance(body, dict) else None)
+            raise (McAuthError if expired else McApiError)(
+                resp.status, body.get("code") if isinstance(body, dict) else None, message,
+                body.get("data") if isinstance(body, dict) else None)
         return body.get("data") if isinstance(body, dict) and "data" in body else body
 
     # --- Gerät --------------------------------------------------------------
@@ -151,10 +155,19 @@ class McClient:
         return data.get("devices", [])
 
     # --- Eigene Rezepte -----------------------------------------------------
-    async def list_own_recipes(self, page: int = 1, size: int = 50, query: str = "") -> dict[str, Any]:
-        params = {"size": size, "page": page, "sortBy[0][field]": "lastUpdated",
-                  "sortBy[0][direction]": "DESC", "q": query}
+    async def list_own_recipes(self, page: int = 1, size: int = 50, query: str = "",
+                               statuses: Iterable[str] = ()) -> dict[str, Any]:
+        params = [("size", str(size)), ("page", str(page)), ("sortBy[0][field]", "lastUpdated"),
+                  ("sortBy[0][direction]", "DESC"), ("q", query),
+                  *(("filters[status][]", s) for s in statuses)]
         return await self._request("GET", "api/v3/auth/user/recipes", params=params)
+
+    # --- Katalog ------------------------------------------------------------
+    async def search_recipes(self, query: str, page: int = 1, *, device: str | None = None) -> dict[str, Any]:
+        params = [("q", query)]
+        if device:
+            params.append(("filters[deviceType]", device))
+        return await self._request("GET", f"api/v1/recipes/search/page/{page}", params=params)
 
     async def get_recipe(self, recipe_id: int) -> dict[str, Any]:
         """Ein Rezept aus dem Katalog samt Schritten.
@@ -174,7 +187,45 @@ class McClient:
     async def update_recipe(self, recipe_id: int, payload: dict[str, Any]) -> dict[str, Any]:
         return (await self._request("PUT", f"api/v3/auth/user/recipes/{recipe_id}", json=payload))["recipe"]
 
+    async def set_recipe_status(self, recipe_id: int, status: str) -> None:
+        await self._request("PATCH", f"api/v3/auth/user/recipes/{recipe_id}", json={"status": status})
+
+    async def upload_image(self, content: bytes, mime: str) -> int:
+        """Upload a picture and return its media ID once it can be used in a recipe."""
+        suffix = mime.rsplit("/", 1)[-1]
+        target = await self._request("POST", "api/v1/media/image/upload-url",
+                                     json={"fileName": f"{uuid.uuid4()}.{suffix}", "mimeType": mime})
+        async with self._session.put(target["url"], data=content, timeout=TIMEOUT, headers={
+                **(target.get("extraHeaders") or {}), "content-type": mime}) as resp:
+            if resp.status >= 400:
+                # Never the URL: it is signed and grants upload access.
+                raise McApiError(resp.status, None, "image upload failed")
+        media_id = int(target["mediaId"])
+        for _ in range(MEDIA_ATTEMPTS):
+            data = await self._request("GET", "api/v1/media", params=[("ids[]", str(media_id))])
+            if any(str(m.get("uploadStatus")) == MEDIA_READY for m in data.get("media") or []):
+                return media_id
+            await asyncio.sleep(1)
+        raise McApiError(504, None, f"image {media_id} was not ready in time")
+
+    # --- Favoriten (v3: v2 antwortet dem App-Token mit 500) -------------------
+    async def list_favorites(self, page: int = 1, size: int = 20) -> dict[str, Any]:
+        params = [("sortBy[0][field]", "date"), ("sortBy[0][direction]", "DESC")]
+        return await self._request("GET", f"api/v3/bookmarks/recipe/details/page/{page}/size/{size}",
+                                   params=params)
+
+    async def add_favorite(self, translation_id: int) -> None:
+        await self._request("POST", "api/v3/bookmarks/recipe",
+                            json={"bookmarkItem": [{"translationId": translation_id}]})
+
+    async def remove_favorite(self, translation_id: int) -> None:
+        await self._request("PUT", "api/v3/bookmarks/recipe", json={"bookmarkItem": [
+            {"translationId": translation_id, "isActive": False, "forceDelete": True}]})
+
     # --- Konto --------------------------------------------------------------
+    async def get_profile(self) -> dict[str, Any]:
+        return (await self._request("GET", "api/v1/users"))["user"]
+
     async def get_shopping_list(self) -> Any:
         return await self._request("GET", "api/v1/users/shoppingList")
 

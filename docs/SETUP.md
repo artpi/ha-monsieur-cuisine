@@ -1,5 +1,7 @@
 # Setup – Monsieur Cuisine for Home Assistant (Alpha)
 
+> **Fork: the browser helper described below no longer exists. See "Fork" in the README for the sign-in.**
+
 🌐 **English** · [Deutsch](EINRICHTUNG.md)
 
 > **Unofficial.** Not affiliated with Lidl, SilverCrest or Tecpal. Uses the

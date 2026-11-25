@@ -4,6 +4,21 @@ All notable changes to this integration. Format based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Unofficial – not
 affiliated with Lidl, SilverCrest or Tecpal.
 
+## [0.5.0] – 2026-11-25 (fork)
+### Added
+- Configurable locale (18 locales, Polish translation and step translator).
+- Recipe actions with response data, and the same as an LLM API for voice and MCP.
+- Image upload, private publishing, favourites, profile, export and restore.
+### Changed
+- Sign-in by pasting the callback address. The browser helper and the
+  unauthenticated callback endpoint are gone. Needs Home Assistant 2026.10.
+### Fixed
+- Shopping list and planner were empty outside Germany (upstream #4).
+- `send_recipe` crashed on internal bookkeeping data (upstream #4).
+- A rejected session refresh now starts a new sign-in.
+- Rejected input (HTTP 403) is no longer mistaken for an expired session.
+- `send_recipe` with `recipe_id` keeps the status of the recipe.
+
 ## [0.4.13] – 2026-10-14
 ### Added
 - **Debug dump of the raw live frame.** With debug logging enabled, every live

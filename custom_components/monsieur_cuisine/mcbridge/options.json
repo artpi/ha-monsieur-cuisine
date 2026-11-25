@@ -1,0 +1,2585 @@
+{
+ "bg-BG": {
+  "categories": [
+   {
+    "id": 882,
+    "name": "Ястия с приставката ренде"
+   },
+   {
+    "id": 874,
+    "name": "Сокове"
+   },
+   {
+    "id": 946,
+    "name": "Веган кухня"
+   },
+   {
+    "id": 950,
+    "name": "Вегетарианска кухня"
+   },
+   {
+    "id": 934,
+    "name": "Сосове и дипове"
+   },
+   {
+    "id": 942,
+    "name": "Супи и яхнии"
+   },
+   {
+    "id": 930,
+    "name": "Салати"
+   },
+   {
+    "id": 1025,
+    "name": "Гарнитури"
+   },
+   {
+    "id": 938,
+    "name": "Снаксове"
+   },
+   {
+    "id": 894,
+    "name": "Основни"
+   },
+   {
+    "id": 866,
+    "name": "Детска кухня"
+   },
+   {
+    "id": 890,
+    "name": "Напитки"
+   },
+   {
+    "id": 926,
+    "name": "Всичко в едно"
+   },
+   {
+    "id": 1030,
+    "name": "Десерти"
+   },
+   {
+    "id": 870,
+    "name": "Печива"
+   },
+   {
+    "id": 886,
+    "name": "Закуски"
+   },
+   {
+    "id": 862,
+    "name": "Ястия за вечеря"
+   },
+   {
+    "id": 878,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 954,
+    "name": "Предястия"
+   },
+   {
+    "id": 918,
+    "name": "Мармалади и желета"
+   },
+   {
+    "id": 898,
+    "name": "Немска кухня"
+   },
+   {
+    "id": 902,
+    "name": "Френска кухня"
+   },
+   {
+    "id": 914,
+    "name": "Испанска кухня"
+   },
+   {
+    "id": 906,
+    "name": "Италианска кухня"
+   },
+   {
+    "id": 922,
+    "name": "Ново"
+   },
+   {
+    "id": 910,
+    "name": "Полска кухня"
+   },
+   {
+    "id": 962,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 850,
+    "name": "лесна"
+   },
+   {
+    "id": 854,
+    "name": "средно трудна"
+   },
+   {
+    "id": 858,
+    "name": "трудна"
+   }
+  ],
+  "ingredient_units": [
+   "г",
+   "ч.л.",
+   "с.л.",
+   "щипка",
+   "щипки",
+   "парчета",
+   "връзка",
+   "връзки"
+  ],
+  "serving_units": [
+   "порция",
+   "порции",
+   "чаша",
+   "чаши",
+   "буркан",
+   "буркана",
+   "брой",
+   "броя",
+   "парче",
+   "парчета",
+   "бутилка",
+   "бутилки"
+  ]
+ },
+ "cs-CZ": {
+  "categories": [
+   {
+    "id": 558,
+    "name": "Food processor"
+   },
+   {
+    "id": 580,
+    "name": "Veganské"
+   },
+   {
+    "id": 589,
+    "name": "Vegetariánské"
+   },
+   {
+    "id": 520,
+    "name": "Omáčky a dipy"
+   },
+   {
+    "id": 521,
+    "name": "Jednoduché a husté polévky"
+   },
+   {
+    "id": 535,
+    "name": "Saláty"
+   },
+   {
+    "id": 522,
+    "name": "Přílohy"
+   },
+   {
+    "id": 523,
+    "name": "Snacky"
+   },
+   {
+    "id": 524,
+    "name": "Hlavní jídla"
+   },
+   {
+    "id": 525,
+    "name": "Výživa pro miminka"
+   },
+   {
+    "id": 526,
+    "name": "Nápoje"
+   },
+   {
+    "id": 527,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 529,
+    "name": "Dezerty"
+   },
+   {
+    "id": 530,
+    "name": "Pečení"
+   },
+   {
+    "id": 531,
+    "name": "Snídaně"
+   },
+   {
+    "id": 532,
+    "name": "Večeře"
+   },
+   {
+    "id": 533,
+    "name": "Předkrmy"
+   },
+   {
+    "id": 534,
+    "name": "Marmelády a želé"
+   },
+   {
+    "id": 591,
+    "name": "Německá kuchyně"
+   },
+   {
+    "id": 593,
+    "name": "Francouzská kuchyně"
+   },
+   {
+    "id": 595,
+    "name": "Španělská kuchyně"
+   },
+   {
+    "id": 594,
+    "name": "Italská kuchyně"
+   },
+   {
+    "id": 592,
+    "name": "Polská kuchyně"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 537,
+    "name": "Jednoduché"
+   },
+   {
+    "id": 536,
+    "name": "Středně těžké"
+   },
+   {
+    "id": 538,
+    "name": "Náročné"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "lžic",
+   "lžíce",
+   "lžiček",
+   "lžička",
+   "lžičky",
+   "špetek",
+   "špetka",
+   "špetky",
+   "špiček nože",
+   "špičku nože",
+   "špičky nože",
+   "vaniček",
+   "vanička",
+   "vaničky"
+  ],
+  "serving_units": [
+   "porce",
+   "porcí",
+   "sklenice",
+   "sklenic",
+   "kousky",
+   "kousků",
+   "kousek",
+   "kus",
+   "kusy",
+   "kusů",
+   "láhev",
+   "láhví"
+  ]
+ },
+ "de-DE": {
+  "categories": [
+   {
+    "id": 554,
+    "name": "Food Processor"
+   },
+   {
+    "id": 579,
+    "name": "Vegan"
+   },
+   {
+    "id": 588,
+    "name": "Vegetarisch"
+   },
+   {
+    "id": 220,
+    "name": "Saucen & Dips"
+   },
+   {
+    "id": 228,
+    "name": "Suppen & Eintöpfe"
+   },
+   {
+    "id": 236,
+    "name": "Salate"
+   },
+   {
+    "id": 244,
+    "name": "Beilagen"
+   },
+   {
+    "id": 252,
+    "name": "Snacks"
+   },
+   {
+    "id": 260,
+    "name": "Hauptgerichte"
+   },
+   {
+    "id": 268,
+    "name": "Babynahrung"
+   },
+   {
+    "id": 276,
+    "name": "Getränke"
+   },
+   {
+    "id": 284,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 308,
+    "name": "Desserts"
+   },
+   {
+    "id": 316,
+    "name": "Backen"
+   },
+   {
+    "id": 324,
+    "name": "Frühstück"
+   },
+   {
+    "id": 332,
+    "name": "Abendessen"
+   },
+   {
+    "id": 340,
+    "name": "Vorspeisen"
+   },
+   {
+    "id": 348,
+    "name": "Marmelade & Gelee"
+   },
+   {
+    "id": 471,
+    "name": "Küche Deutsch"
+   },
+   {
+    "id": 472,
+    "name": "Küche Französisch"
+   },
+   {
+    "id": 499,
+    "name": "Küche Spanisch"
+   },
+   {
+    "id": 473,
+    "name": "Küche Italienisch"
+   },
+   {
+    "id": 498,
+    "name": "Küche Polnisch"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 142,
+    "name": "Einfach"
+   },
+   {
+    "id": 99,
+    "name": "Mittel"
+   },
+   {
+    "id": 104,
+    "name": "Schwer"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "Beet",
+   "Beete",
+   "El",
+   "Msp.",
+   "Prise",
+   "Prisen",
+   "Stück",
+   "Tl"
+  ],
+  "serving_units": [
+   "Portion",
+   "Portionen",
+   "Glas",
+   "Gläser",
+   "Stück",
+   "Stücke",
+   "Flasche",
+   "Flaschen"
+  ]
+ },
+ "el-GR": {
+  "categories": [
+   {
+    "id": 673,
+    "name": "Food Processor"
+   },
+   {
+    "id": 749,
+    "name": "Αποχυμωτής ατμού"
+   },
+   {
+    "id": 753,
+    "name": "Vegan"
+   },
+   {
+    "id": 757,
+    "name": "Χορτοφαγία"
+   },
+   {
+    "id": 713,
+    "name": "Σάλτσες & ντιπ"
+   },
+   {
+    "id": 725,
+    "name": "Σούπες"
+   },
+   {
+    "id": 709,
+    "name": "Σαλάτες"
+   },
+   {
+    "id": 717,
+    "name": "Γαρνιτούρες"
+   },
+   {
+    "id": 721,
+    "name": "Σνακ"
+   },
+   {
+    "id": 693,
+    "name": "Κυρίως πιάτα"
+   },
+   {
+    "id": 649,
+    "name": "Βρεφικές τροφές"
+   },
+   {
+    "id": 669,
+    "name": "Ποτά"
+   },
+   {
+    "id": 701,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 661,
+    "name": "Επιδόρπια"
+   },
+   {
+    "id": 653,
+    "name": "Στον φούρνο"
+   },
+   {
+    "id": 657,
+    "name": "Πρωινό"
+   },
+   {
+    "id": 664,
+    "name": "Δείπνο"
+   },
+   {
+    "id": 763,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 745,
+    "name": "Ορεκτικά"
+   },
+   {
+    "id": 689,
+    "name": "Μαρμελάδες και ζελέ"
+   },
+   {
+    "id": 681,
+    "name": "Κουζίνα γερμανική"
+   },
+   {
+    "id": 677,
+    "name": "Κουζίνα γαλλική"
+   },
+   {
+    "id": 741,
+    "name": "Κουζίνα ισπανική"
+   },
+   {
+    "id": 685,
+    "name": "Κουζίνα ιταλική"
+   },
+   {
+    "id": 697,
+    "name": "Νέα"
+   },
+   {
+    "id": 705,
+    "name": "Κουζίνα πολωνική"
+   },
+   {
+    "id": 771,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 733,
+    "name": "Εύκολη"
+   },
+   {
+    "id": 737,
+    "name": "Μέτρια"
+   },
+   {
+    "id": 729,
+    "name": "Δύσκολη"
+   }
+  ],
+  "ingredient_units": [
+   "γρ.",
+   "κ.γ.",
+   "κ.σ.",
+   "πρέζα",
+   "πρέζες",
+   "κομμάτι",
+   "καφασάκι",
+   "καφασάκια"
+  ],
+  "serving_units": [
+   "μερίδα",
+   "μερίδες",
+   "ποτήρι",
+   "ποτήρια",
+   "βάζο",
+   "βάζα",
+   "κομμάτι",
+   "κομμάτια",
+   "μπουκάλι",
+   "μπουκάλια"
+  ]
+ },
+ "en-US": {
+  "categories": [
+   {
+    "id": 553,
+    "name": "Food Processor"
+   },
+   {
+    "id": 572,
+    "name": "Vegan"
+   },
+   {
+    "id": 581,
+    "name": "Vegetarian"
+   },
+   {
+    "id": 218,
+    "name": "Sauces & dips"
+   },
+   {
+    "id": 226,
+    "name": "Soups & stews"
+   },
+   {
+    "id": 234,
+    "name": "Salads"
+   },
+   {
+    "id": 242,
+    "name": "Side dishes"
+   },
+   {
+    "id": 250,
+    "name": "Snacks"
+   },
+   {
+    "id": 258,
+    "name": "Main courses"
+   },
+   {
+    "id": 266,
+    "name": "Baby food"
+   },
+   {
+    "id": 274,
+    "name": "Drinks"
+   },
+   {
+    "id": 282,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 306,
+    "name": "Desserts"
+   },
+   {
+    "id": 314,
+    "name": "Baking"
+   },
+   {
+    "id": 322,
+    "name": "Breakfast"
+   },
+   {
+    "id": 330,
+    "name": "Dinner"
+   },
+   {
+    "id": 338,
+    "name": "Starters"
+   },
+   {
+    "id": 346,
+    "name": "Jams & jellies"
+   },
+   {
+    "id": 457,
+    "name": "German cuisine"
+   },
+   {
+    "id": 458,
+    "name": "French cuisine"
+   },
+   {
+    "id": 492,
+    "name": "Spanish cuisine"
+   },
+   {
+    "id": 460,
+    "name": "Italian cuisine"
+   },
+   {
+    "id": 461,
+    "name": "Polish cuisine"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 22,
+    "name": "Easy"
+   },
+   {
+    "id": 16,
+    "name": "Medium"
+   },
+   {
+    "id": 20,
+    "name": "Difficult"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "big pinch",
+   "big pinches",
+   "pinch",
+   "pinches",
+   "punnet",
+   "punnets",
+   "tbsp",
+   "tsp"
+  ],
+  "serving_units": [
+   "serving",
+   "servings",
+   "glass",
+   "glasses",
+   "jar",
+   "jars",
+   "piece",
+   "pieces",
+   "slice",
+   "slices",
+   "bottle",
+   "bottles"
+  ]
+ },
+ "es-ES": {
+  "categories": [
+   {
+    "id": 560,
+    "name": "Procesador de alimentos"
+   },
+   {
+    "id": 573,
+    "name": "Vegano"
+   },
+   {
+    "id": 582,
+    "name": "Vegetariano"
+   },
+   {
+    "id": 225,
+    "name": "Salsas"
+   },
+   {
+    "id": 233,
+    "name": "Sopas y cremas & guisos"
+   },
+   {
+    "id": 241,
+    "name": "Ensaladas"
+   },
+   {
+    "id": 249,
+    "name": "Guarniciones"
+   },
+   {
+    "id": 257,
+    "name": "Tentempiés"
+   },
+   {
+    "id": 265,
+    "name": "Platos principales"
+   },
+   {
+    "id": 273,
+    "name": "Papillas para bebés"
+   },
+   {
+    "id": 281,
+    "name": "Bebidas"
+   },
+   {
+    "id": 289,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 313,
+    "name": "Postres"
+   },
+   {
+    "id": 321,
+    "name": "Respostería"
+   },
+   {
+    "id": 329,
+    "name": "Desayunos"
+   },
+   {
+    "id": 337,
+    "name": "Cenas"
+   },
+   {
+    "id": 345,
+    "name": "Entrantes"
+   },
+   {
+    "id": 353,
+    "name": "Mermeladas y jaleas"
+   },
+   {
+    "id": 486,
+    "name": "Cocina alemana"
+   },
+   {
+    "id": 487,
+    "name": "Cocina francesca"
+   },
+   {
+    "id": 509,
+    "name": "Cocina española"
+   },
+   {
+    "id": 488,
+    "name": "Cocina italiana"
+   },
+   {
+    "id": 489,
+    "name": "Cocina polaca"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 160,
+    "name": "fácil"
+   },
+   {
+    "id": 101,
+    "name": "medio"
+   },
+   {
+    "id": 107,
+    "name": "difícil"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "bandeja",
+   "bandejas",
+   "cucharada",
+   "cucharadas",
+   "cucharadita",
+   "pizca",
+   "pizcas"
+  ],
+  "serving_units": [
+   "ración",
+   "raciones",
+   "vaso",
+   "vasos",
+   "tarro",
+   "tarros",
+   "unidades",
+   "unidad",
+   "porción",
+   "porciones",
+   "botella",
+   "botellas"
+  ]
+ },
+ "fi-FI": {
+  "categories": [
+   {
+    "id": 880,
+    "name": "food processor"
+   },
+   {
+    "id": 872,
+    "name": "höyrymehustin"
+   },
+   {
+    "id": 944,
+    "name": "vegaani"
+   },
+   {
+    "id": 948,
+    "name": "vegetaarinen"
+   },
+   {
+    "id": 932,
+    "name": "kastikkeet ja dipit"
+   },
+   {
+    "id": 940,
+    "name": "keitot ja muhennokset"
+   },
+   {
+    "id": 928,
+    "name": "salaatit"
+   },
+   {
+    "id": 1023,
+    "name": "lisukkeet"
+   },
+   {
+    "id": 936,
+    "name": "naposteltavat"
+   },
+   {
+    "id": 892,
+    "name": "pääruoat"
+   },
+   {
+    "id": 864,
+    "name": "vauvanruoka"
+   },
+   {
+    "id": 888,
+    "name": "juomat"
+   },
+   {
+    "id": 924,
+    "name": "one pot / all in one"
+   },
+   {
+    "id": 1028,
+    "name": "jälkiruoat"
+   },
+   {
+    "id": 868,
+    "name": "leivonta"
+   },
+   {
+    "id": 884,
+    "name": "aamiainen"
+   },
+   {
+    "id": 860,
+    "name": "illallinen"
+   },
+   {
+    "id": 876,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 952,
+    "name": "alkupalat"
+   },
+   {
+    "id": 916,
+    "name": "hillot ja hyytelöt"
+   },
+   {
+    "id": 896,
+    "name": "saksalainen keittiö"
+   },
+   {
+    "id": 900,
+    "name": "ranskalainen keittiö"
+   },
+   {
+    "id": 912,
+    "name": "espanjalainen keittiö"
+   },
+   {
+    "id": 904,
+    "name": "italialainen keittiö"
+   },
+   {
+    "id": 920,
+    "name": "uusi"
+   },
+   {
+    "id": 908,
+    "name": "puolalainen keittiö"
+   },
+   {
+    "id": 960,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 848,
+    "name": "helppo"
+   },
+   {
+    "id": 852,
+    "name": "keskivaikea"
+   },
+   {
+    "id": 856,
+    "name": "vaikea"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "tl",
+   "rkl",
+   "ripaus",
+   "ripausta",
+   "veitsenkärjellinen",
+   "veitsenkärjellistä",
+   "kpl",
+   "rasia",
+   "rasiaa"
+  ],
+  "serving_units": [
+   "annos",
+   "annosta",
+   "lasi",
+   "lasia",
+   "purkki",
+   "purkkia",
+   "kpl",
+   "pala",
+   "palaa",
+   "siivu",
+   "siivua",
+   "pullo",
+   "pulloa"
+  ]
+ },
+ "fr-FR": {
+  "categories": [
+   {
+    "id": 555,
+    "name": "Trancheuse-râpe"
+   },
+   {
+    "id": 574,
+    "name": "Végan"
+   },
+   {
+    "id": 583,
+    "name": "Végétarien"
+   },
+   {
+    "id": 219,
+    "name": "Sauces et dips"
+   },
+   {
+    "id": 227,
+    "name": "Soupes & potées"
+   },
+   {
+    "id": 235,
+    "name": "Salades"
+   },
+   {
+    "id": 243,
+    "name": "Garnitures"
+   },
+   {
+    "id": 251,
+    "name": "Snacks"
+   },
+   {
+    "id": 259,
+    "name": "Plats principaux"
+   },
+   {
+    "id": 267,
+    "name": "Aliments pour bébé"
+   },
+   {
+    "id": 275,
+    "name": "Boissons"
+   },
+   {
+    "id": 283,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 307,
+    "name": "Dessert"
+   },
+   {
+    "id": 315,
+    "name": "Recettes au four"
+   },
+   {
+    "id": 323,
+    "name": "Petit-déjeuner"
+   },
+   {
+    "id": 331,
+    "name": "Dîner"
+   },
+   {
+    "id": 339,
+    "name": "Entrées"
+   },
+   {
+    "id": 347,
+    "name": "Confitures & gelées"
+   },
+   {
+    "id": 466,
+    "name": "Cuisine allemande"
+   },
+   {
+    "id": 467,
+    "name": "Cuisine française"
+   },
+   {
+    "id": 495,
+    "name": "Cuisine espagnole"
+   },
+   {
+    "id": 468,
+    "name": "Cuisine italienne"
+   },
+   {
+    "id": 469,
+    "name": "Cuisine polonaise"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 108,
+    "name": "Facile"
+   },
+   {
+    "id": 98,
+    "name": "Moyen"
+   },
+   {
+    "id": 103,
+    "name": "Difficile"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "c.c.",
+   "c.s.",
+   "caissette",
+   "caissettes",
+   "pincée",
+   "pincées"
+  ],
+  "serving_units": [
+   "portion",
+   "portions",
+   "verre",
+   "verres",
+   "pot",
+   "pots",
+   "bocal",
+   "bocaux",
+   "unités",
+   "unité",
+   "part",
+   "parts",
+   "pots",
+   "bouteille",
+   "bouteilles"
+  ]
+ },
+ "hr-HR": {
+  "categories": [
+   {
+    "id": 883,
+    "name": "Procesor hrane"
+   },
+   {
+    "id": 875,
+    "name": "Parni sokovnik"
+   },
+   {
+    "id": 947,
+    "name": "Veganski"
+   },
+   {
+    "id": 951,
+    "name": "Vegetarijanski"
+   },
+   {
+    "id": 935,
+    "name": "Umaci"
+   },
+   {
+    "id": 943,
+    "name": "Juhe i variva"
+   },
+   {
+    "id": 931,
+    "name": "Salate"
+   },
+   {
+    "id": 1026,
+    "name": "Prilozi"
+   },
+   {
+    "id": 939,
+    "name": "Grickalice"
+   },
+   {
+    "id": 895,
+    "name": "Glavna jela"
+   },
+   {
+    "id": 867,
+    "name": "Dječja hrana"
+   },
+   {
+    "id": 891,
+    "name": "Napici"
+   },
+   {
+    "id": 927,
+    "name": "Bosanski lonac / sve u jednom"
+   },
+   {
+    "id": 1031,
+    "name": "Deserti"
+   },
+   {
+    "id": 871,
+    "name": "Pečenja"
+   },
+   {
+    "id": 887,
+    "name": "Doručak"
+   },
+   {
+    "id": 863,
+    "name": "Večera"
+   },
+   {
+    "id": 879,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 955,
+    "name": "Predjela"
+   },
+   {
+    "id": 919,
+    "name": "Džemovi i želei"
+   },
+   {
+    "id": 899,
+    "name": "Njemačka kuhinja"
+   },
+   {
+    "id": 903,
+    "name": "Francuska kuhinja"
+   },
+   {
+    "id": 915,
+    "name": "Španjolska kuhinja"
+   },
+   {
+    "id": 907,
+    "name": "Talijanska kuhinja"
+   },
+   {
+    "id": 923,
+    "name": "Novo"
+   },
+   {
+    "id": 911,
+    "name": "Poljska kuhinja"
+   },
+   {
+    "id": 963,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 851,
+    "name": "Jednostavno"
+   },
+   {
+    "id": 855,
+    "name": "Srednjeteško"
+   },
+   {
+    "id": 859,
+    "name": "Teško"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "žličica",
+   "žličice",
+   "žlica",
+   "žlice",
+   "prstohvat",
+   "prstohvata",
+   "veliki prstohvat",
+   "velika prstohvata",
+   "velikih prstohvata",
+   "komad(a)",
+   "košarica",
+   "košarice"
+  ],
+  "serving_units": [
+   "porcija",
+   "porcije",
+   "čaša",
+   "čaše",
+   "staklenka",
+   "staklenke",
+   "staklenki",
+   "komad",
+   "komada",
+   "kriška",
+   "kriške",
+   "boca",
+   "boce"
+  ]
+ },
+ "hu-HU": {
+  "categories": [
+   {
+    "id": 615,
+    "name": "konyhai robotgép"
+   },
+   {
+    "id": 631,
+    "name": "gőzfacsaró"
+   },
+   {
+    "id": 632,
+    "name": "vegán"
+   },
+   {
+    "id": 633,
+    "name": "vegetáriánus"
+   },
+   {
+    "id": 625,
+    "name": "szószok és mártogatósok"
+   },
+   {
+    "id": 628,
+    "name": "levesek és pörköltek"
+   },
+   {
+    "id": 624,
+    "name": "saláták"
+   },
+   {
+    "id": 626,
+    "name": "köretek"
+   },
+   {
+    "id": 627,
+    "name": "snackek"
+   },
+   {
+    "id": 620,
+    "name": "főételek"
+   },
+   {
+    "id": 609,
+    "name": "bébiételek"
+   },
+   {
+    "id": 614,
+    "name": "italok"
+   },
+   {
+    "id": 622,
+    "name": "egyedényes ételek"
+   },
+   {
+    "id": 612,
+    "name": "desszertek"
+   },
+   {
+    "id": 610,
+    "name": "sütemények"
+   },
+   {
+    "id": 611,
+    "name": "reggelik"
+   },
+   {
+    "id": 613,
+    "name": "vacsorák"
+   },
+   {
+    "id": 761,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 630,
+    "name": "előételek"
+   },
+   {
+    "id": 619,
+    "name": "lekvárok és dzsemek"
+   },
+   {
+    "id": 617,
+    "name": "német konyha"
+   },
+   {
+    "id": 616,
+    "name": "francia konyha"
+   },
+   {
+    "id": 629,
+    "name": "spanyol konyha"
+   },
+   {
+    "id": 618,
+    "name": "olasz konyha"
+   },
+   {
+    "id": 621,
+    "name": "új"
+   },
+   {
+    "id": 623,
+    "name": "lengyel konyha"
+   },
+   {
+    "id": 772,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 635,
+    "name": "egyszerű"
+   },
+   {
+    "id": 636,
+    "name": "közepes"
+   },
+   {
+    "id": 634,
+    "name": "nehéz"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "teáskanál",
+   "evőkanál",
+   "csipet",
+   "nagy csipet",
+   "kis doboz",
+   "db"
+  ],
+  "serving_units": [
+   "adag",
+   "vizespohár",
+   "üveg",
+   "befőttesüveg",
+   "darab",
+   "szelet",
+   "palack"
+  ]
+ },
+ "it-IT": {
+  "categories": [
+   {
+    "id": 557,
+    "name": "Tagliaverdure"
+   },
+   {
+    "id": 575,
+    "name": "Vegano"
+   },
+   {
+    "id": 584,
+    "name": "Vegetariano"
+   },
+   {
+    "id": 221,
+    "name": "Salse e condimenti"
+   },
+   {
+    "id": 229,
+    "name": "Zuppe & stufati"
+   },
+   {
+    "id": 237,
+    "name": "Insalate"
+   },
+   {
+    "id": 245,
+    "name": "Contorni"
+   },
+   {
+    "id": 253,
+    "name": "Spuntini"
+   },
+   {
+    "id": 261,
+    "name": "Piatti principali"
+   },
+   {
+    "id": 269,
+    "name": "Alimenti per bambini"
+   },
+   {
+    "id": 277,
+    "name": "Bevande"
+   },
+   {
+    "id": 285,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 309,
+    "name": "Dolci"
+   },
+   {
+    "id": 317,
+    "name": "Cuocere al forno"
+   },
+   {
+    "id": 325,
+    "name": "Colazione"
+   },
+   {
+    "id": 333,
+    "name": "Cena"
+   },
+   {
+    "id": 341,
+    "name": "Antipasti"
+   },
+   {
+    "id": 349,
+    "name": "Marmellate & gelatina"
+   },
+   {
+    "id": 474,
+    "name": "Cucina tedesca"
+   },
+   {
+    "id": 475,
+    "name": "Cucina francese"
+   },
+   {
+    "id": 503,
+    "name": "Cucina spagnola"
+   },
+   {
+    "id": 476,
+    "name": "Cucina italiana"
+   },
+   {
+    "id": 477,
+    "name": "Cucina polacca"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 109,
+    "name": "Minima"
+   },
+   {
+    "id": 100,
+    "name": "Media"
+   },
+   {
+    "id": 105,
+    "name": "Massima"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "cucchiai",
+   "cucchiaini",
+   "cucchiaino",
+   "cucchiaio",
+   "pizzichi",
+   "pizzico",
+   "zolla",
+   "zolle"
+  ],
+  "serving_units": [
+   "porzione",
+   "porzioni",
+   "bicchiere",
+   "bicchieri",
+   "vasetto",
+   "vasetti",
+   "pezzi",
+   "pezzo",
+   "fetta",
+   "fette",
+   "bottiglia",
+   "bottiglie"
+  ]
+ },
+ "nl-NL": {
+  "categories": [
+   {
+    "id": 561,
+    "name": "Food Processor"
+   },
+   {
+    "id": 576,
+    "name": "Veganistisch"
+   },
+   {
+    "id": 585,
+    "name": "Vegetarisch"
+   },
+   {
+    "id": 224,
+    "name": "Sauzen & Dipsauzen"
+   },
+   {
+    "id": 232,
+    "name": "Soepen & Stoofschotels"
+   },
+   {
+    "id": 240,
+    "name": "Salades"
+   },
+   {
+    "id": 248,
+    "name": "Bijgerechten"
+   },
+   {
+    "id": 256,
+    "name": "Snacks"
+   },
+   {
+    "id": 264,
+    "name": "Hoofdgerechten"
+   },
+   {
+    "id": 272,
+    "name": "Babyvoeding"
+   },
+   {
+    "id": 280,
+    "name": "Dranken"
+   },
+   {
+    "id": 288,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 312,
+    "name": "Nagerechten"
+   },
+   {
+    "id": 320,
+    "name": "Bakken"
+   },
+   {
+    "id": 328,
+    "name": "Ontbijt"
+   },
+   {
+    "id": 336,
+    "name": "Avondeten"
+   },
+   {
+    "id": 344,
+    "name": "Voorgerechten"
+   },
+   {
+    "id": 352,
+    "name": "Jam & gelei"
+   },
+   {
+    "id": 462,
+    "name": "Keuken Duitse"
+   },
+   {
+    "id": 463,
+    "name": "Keuken Franse"
+   },
+   {
+    "id": 490,
+    "name": "Keuken Poolse"
+   },
+   {
+    "id": 464,
+    "name": "Keuken Italiaanse"
+   },
+   {
+    "id": 465,
+    "name": "Keuken Spaanse"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 204,
+    "name": "eenvoudig"
+   },
+   {
+    "id": 206,
+    "name": "gemiddeld"
+   },
+   {
+    "id": 205,
+    "name": "moeilijk"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "bed",
+   "bedden",
+   "el",
+   "mespuntje",
+   "mespuntjes",
+   "snufje",
+   "snufjes",
+   "tl"
+  ],
+  "serving_units": [
+   "portie",
+   "porties",
+   "glas",
+   "glazen",
+   "potje",
+   "potjes",
+   "stuk",
+   "stuks",
+   "stukken",
+   "fles",
+   "flessen"
+  ]
+ },
+ "pl-PL": {
+  "categories": [
+   {
+    "id": 559,
+    "name": "Przystawka do krojenia warzyw"
+   },
+   {
+    "id": 577,
+    "name": "Dania wegańskie"
+   },
+   {
+    "id": 586,
+    "name": "Dania wegetariańskie"
+   },
+   {
+    "id": 222,
+    "name": "Sosy i dipy"
+   },
+   {
+    "id": 230,
+    "name": "Zupy & danie jednogarnkowe"
+   },
+   {
+    "id": 238,
+    "name": "Sałatki"
+   },
+   {
+    "id": 246,
+    "name": "Dodatki"
+   },
+   {
+    "id": 254,
+    "name": "Przekąski"
+   },
+   {
+    "id": 262,
+    "name": "Dania główne"
+   },
+   {
+    "id": 270,
+    "name": "Potrawy dla niemowląt"
+   },
+   {
+    "id": 278,
+    "name": "Napoje"
+   },
+   {
+    "id": 286,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 310,
+    "name": "Desery"
+   },
+   {
+    "id": 318,
+    "name": "Wypieki"
+   },
+   {
+    "id": 326,
+    "name": "Śniadania"
+   },
+   {
+    "id": 334,
+    "name": "Kolacje"
+   },
+   {
+    "id": 342,
+    "name": "Przystawki"
+   },
+   {
+    "id": 350,
+    "name": "Dżemy i galaretki"
+   },
+   {
+    "id": 478,
+    "name": "Kuchnia niemiecka"
+   },
+   {
+    "id": 479,
+    "name": "Kuchnia francuska"
+   },
+   {
+    "id": 505,
+    "name": "Kuchnia hiszpańska"
+   },
+   {
+    "id": 480,
+    "name": "Kuchnia włoska"
+   },
+   {
+    "id": 481,
+    "name": "Kuchnia polska"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 159,
+    "name": "łatwe"
+   },
+   {
+    "id": 102,
+    "name": "średnio trudne"
+   },
+   {
+    "id": 106,
+    "name": "trudne"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "czubek noża",
+   "czubki noża",
+   "czubków noża",
+   "łyżeczek",
+   "łyżeczka",
+   "łyżeczki",
+   "łyżek",
+   "łyżka",
+   "łyżki",
+   "pudełeczek",
+   "pudełeczka",
+   "pudełeczko",
+   "szczypt",
+   "szczypta",
+   "szczypty"
+  ],
+  "serving_units": [
+   "porcja",
+   "porcje",
+   "porcji",
+   "szklanka",
+   "szklanki",
+   "słoik",
+   "słoiki",
+   "słoików",
+   "sztuki",
+   "sztuk",
+   "sztuka",
+   "kawałek",
+   "kawałki",
+   "kawałków",
+   "butelka",
+   "butelki",
+   "butelek"
+  ]
+ },
+ "pt-PT": {
+  "categories": [
+   {
+    "id": 556,
+    "name": "Processador de Alimentos"
+   },
+   {
+    "id": 578,
+    "name": "Vegano"
+   },
+   {
+    "id": 587,
+    "name": "Vegetariano"
+   },
+   {
+    "id": 223,
+    "name": "Molhos"
+   },
+   {
+    "id": 231,
+    "name": "Sopas & guisados"
+   },
+   {
+    "id": 239,
+    "name": "Saladas"
+   },
+   {
+    "id": 247,
+    "name": "Acompanhamentos"
+   },
+   {
+    "id": 255,
+    "name": "Snacks"
+   },
+   {
+    "id": 263,
+    "name": "Pratos principais"
+   },
+   {
+    "id": 271,
+    "name": "Comida para bebé"
+   },
+   {
+    "id": 279,
+    "name": "Bebidas"
+   },
+   {
+    "id": 287,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 311,
+    "name": "Sobremesas"
+   },
+   {
+    "id": 319,
+    "name": "Pastelaria e padaria"
+   },
+   {
+    "id": 327,
+    "name": "Pequeno almoço"
+   },
+   {
+    "id": 335,
+    "name": "Jantar"
+   },
+   {
+    "id": 343,
+    "name": "Entradas"
+   },
+   {
+    "id": 351,
+    "name": "Compotas e geleias"
+   },
+   {
+    "id": 482,
+    "name": "Cozinha alemã"
+   },
+   {
+    "id": 483,
+    "name": "Cozinha francesa"
+   },
+   {
+    "id": 507,
+    "name": "Cozinha espanhola"
+   },
+   {
+    "id": 484,
+    "name": "Cozinha italiana"
+   },
+   {
+    "id": 485,
+    "name": "Cozinha polaca"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 203,
+    "name": "fácil"
+   },
+   {
+    "id": 201,
+    "name": "médio"
+   },
+   {
+    "id": 202,
+    "name": "difícil"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "c. de chá",
+   "c. de sopa",
+   "germinador",
+   "germinadores",
+   "pitada",
+   "pitada grande",
+   "pitadas",
+   "pitadas grandes"
+  ],
+  "serving_units": [
+   "porção",
+   "porções",
+   "copo",
+   "copos",
+   "frasco",
+   "frascos",
+   "unidade",
+   "unidades",
+   "fatia",
+   "fatias",
+   "garrafa",
+   "garrafas"
+  ]
+ },
+ "ro-RO": {
+  "categories": [
+   {
+    "id": 674,
+    "name": "Food Processor"
+   },
+   {
+    "id": 750,
+    "name": "Storcător cu aburi"
+   },
+   {
+    "id": 754,
+    "name": "Vegan"
+   },
+   {
+    "id": 758,
+    "name": "Vegetarian"
+   },
+   {
+    "id": 714,
+    "name": "Sosur"
+   },
+   {
+    "id": 726,
+    "name": "Supe și tocănițe"
+   },
+   {
+    "id": 710,
+    "name": "Salate"
+   },
+   {
+    "id": 718,
+    "name": "Garnituri"
+   },
+   {
+    "id": 722,
+    "name": "Snack-uri"
+   },
+   {
+    "id": 694,
+    "name": "Feluri principale"
+   },
+   {
+    "id": 650,
+    "name": "Hrană pentru bebeluși"
+   },
+   {
+    "id": 670,
+    "name": "Băuturi"
+   },
+   {
+    "id": 702,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 662,
+    "name": "Deserturi"
+   },
+   {
+    "id": 654,
+    "name": "Coacere"
+   },
+   {
+    "id": 658,
+    "name": "Mic dejun"
+   },
+   {
+    "id": 666,
+    "name": "Cină"
+   },
+   {
+    "id": 762,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 746,
+    "name": "Aperitive"
+   },
+   {
+    "id": 690,
+    "name": "Marmeladă și jeleu"
+   },
+   {
+    "id": 682,
+    "name": "Bucătărie germană"
+   },
+   {
+    "id": 678,
+    "name": "Bucătărie franțuzească"
+   },
+   {
+    "id": 742,
+    "name": "Bucătărie spaniolă"
+   },
+   {
+    "id": 686,
+    "name": "Bucătărie italiană"
+   },
+   {
+    "id": 698,
+    "name": "Nou"
+   },
+   {
+    "id": 706,
+    "name": "Bucătărie poloneză"
+   },
+   {
+    "id": 773,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 734,
+    "name": "ușor"
+   },
+   {
+    "id": 738,
+    "name": "mediu"
+   },
+   {
+    "id": 730,
+    "name": "dificil"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "linguriță",
+   "lingurițe",
+   "lingură",
+   "linguri",
+   "priză",
+   "prize",
+   "vârf de cuțit",
+   "vârfuri de cuțit",
+   "bucată",
+   "strat",
+   "straturi"
+  ],
+  "serving_units": [
+   "porție",
+   "porții",
+   "pahar",
+   "pahare",
+   "borcan",
+   "borcane",
+   "unitate",
+   "unități",
+   "bucată",
+   "bucăți",
+   "felie",
+   "felii",
+   "sticlă",
+   "sticle"
+  ]
+ },
+ "sk-SK": {
+  "categories": [
+   {
+    "id": 675,
+    "name": "Food processor"
+   },
+   {
+    "id": 751,
+    "name": "Parný odšťavovač"
+   },
+   {
+    "id": 755,
+    "name": "Vegánske jedlá"
+   },
+   {
+    "id": 759,
+    "name": "Vegetariánske jedlá"
+   },
+   {
+    "id": 715,
+    "name": "Omáčky a dipy"
+   },
+   {
+    "id": 727,
+    "name": "Jednoduché a husté polievky"
+   },
+   {
+    "id": 711,
+    "name": "Šaláty"
+   },
+   {
+    "id": 719,
+    "name": "Prílohy"
+   },
+   {
+    "id": 723,
+    "name": "Snacky"
+   },
+   {
+    "id": 695,
+    "name": "Hlavné jedlá"
+   },
+   {
+    "id": 651,
+    "name": "Výživa pre bábätká"
+   },
+   {
+    "id": 671,
+    "name": "Nápoje"
+   },
+   {
+    "id": 703,
+    "name": "One pot / All in One"
+   },
+   {
+    "id": 665,
+    "name": "Dezerty"
+   },
+   {
+    "id": 655,
+    "name": "Pečenie"
+   },
+   {
+    "id": 659,
+    "name": "Raňajky"
+   },
+   {
+    "id": 667,
+    "name": "Večera"
+   },
+   {
+    "id": 764,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 747,
+    "name": "Predjedlá"
+   },
+   {
+    "id": 691,
+    "name": "Džemy, marmelády a želé"
+   },
+   {
+    "id": 683,
+    "name": "Nemecká kuchyňa"
+   },
+   {
+    "id": 679,
+    "name": "Francúzska kuchyňa"
+   },
+   {
+    "id": 743,
+    "name": "Španielska kuchyňa"
+   },
+   {
+    "id": 687,
+    "name": "Talianska kuchyňa"
+   },
+   {
+    "id": 699,
+    "name": "Novinka"
+   },
+   {
+    "id": 707,
+    "name": "Poľská kuchyňa"
+   },
+   {
+    "id": 774,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 735,
+    "name": "jednoduché"
+   },
+   {
+    "id": 739,
+    "name": "stredne náročné"
+   },
+   {
+    "id": 731,
+    "name": "náročné"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "lyžička",
+   "lyžičky",
+   "lyžičiek",
+   "lyžica",
+   "lyžice",
+   "lyžíc",
+   "štipka",
+   "štipky",
+   "štipiek",
+   "na špičku noža",
+   "na špičky noža",
+   "na špičiek noža",
+   "kus",
+   "vanička",
+   "vaničky",
+   "vaničiek"
+  ],
+  "serving_units": [
+   "porcia",
+   "porcie",
+   "porcií",
+   "pohár",
+   "poháre",
+   "pohárov",
+   "kúsok",
+   "kúsky",
+   "kúskov",
+   "kus",
+   "kusy",
+   "kusov",
+   "fľaša",
+   "fľaše",
+   "fliaš"
+  ]
+ },
+ "sr-RS": {
+  "categories": [
+   {
+    "id": 1516,
+    "name": "Food Processor"
+   },
+   {
+    "id": 1518,
+    "name": "vegan"
+   },
+   {
+    "id": 1519,
+    "name": "vegetarijansko"
+   },
+   {
+    "id": 1494,
+    "name": "sosovi i umaci"
+   },
+   {
+    "id": 1495,
+    "name": "supe i kuvana jela"
+   },
+   {
+    "id": 1496,
+    "name": "salata"
+   },
+   {
+    "id": 1497,
+    "name": "prilozi"
+   },
+   {
+    "id": 1498,
+    "name": "snekovi"
+   },
+   {
+    "id": 1499,
+    "name": "glavna jela"
+   },
+   {
+    "id": 1500,
+    "name": "hrana za bebe"
+   },
+   {
+    "id": 1501,
+    "name": "pića"
+   },
+   {
+    "id": 1502,
+    "name": "sve iz jednog lonca / multifunkcionalni aparat"
+   },
+   {
+    "id": 1503,
+    "name": "deserti"
+   },
+   {
+    "id": 1504,
+    "name": "peći"
+   },
+   {
+    "id": 1505,
+    "name": "doručak"
+   },
+   {
+    "id": 1506,
+    "name": "večera"
+   },
+   {
+    "id": 1507,
+    "name": "predjela"
+   },
+   {
+    "id": 1508,
+    "name": "marmelada i žele"
+   },
+   {
+    "id": 1510,
+    "name": "nemačka kuhinja"
+   },
+   {
+    "id": 1511,
+    "name": "francuska kuhinja"
+   },
+   {
+    "id": 1514,
+    "name": "španska kuhinja"
+   },
+   {
+    "id": 1512,
+    "name": "italijanska kuhinja"
+   },
+   {
+    "id": 1513,
+    "name": "poljska kuhinja"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 863,
+    "name": "jednostavno"
+   },
+   {
+    "id": 866,
+    "name": "srednje"
+   },
+   {
+    "id": 871,
+    "name": "teško"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "kk",
+   "sk",
+   "prstohvat",
+   "prstohvata",
+   "na vrh noža",
+   "kom.",
+   "leja",
+   "leje"
+  ],
+  "serving_units": [
+   "porcija",
+   "porcije",
+   "čaša",
+   "čaše",
+   "tegla",
+   "tegle",
+   "tegli",
+   "komad ",
+   "komada",
+   "boca",
+   "boce"
+  ]
+ },
+ "sv-SE": {
+  "categories": [
+   {
+    "id": 881,
+    "name": "matberedare"
+   },
+   {
+    "id": 873,
+    "name": "ångjuicer"
+   },
+   {
+    "id": 945,
+    "name": "vegansk"
+   },
+   {
+    "id": 949,
+    "name": "vegetarisk"
+   },
+   {
+    "id": 933,
+    "name": "såser & dipper"
+   },
+   {
+    "id": 941,
+    "name": "soppor & grytor"
+   },
+   {
+    "id": 929,
+    "name": "sallader"
+   },
+   {
+    "id": 1054,
+    "name": "tillbehör"
+   },
+   {
+    "id": 937,
+    "name": "mellanmål"
+   },
+   {
+    "id": 893,
+    "name": "huvudrätter"
+   },
+   {
+    "id": 865,
+    "name": "barnmat"
+   },
+   {
+    "id": 889,
+    "name": "drycker"
+   },
+   {
+    "id": 925,
+    "name": "One-Pot / All-in-One"
+   },
+   {
+    "id": 1055,
+    "name": "desserter"
+   },
+   {
+    "id": 869,
+    "name": "baka"
+   },
+   {
+    "id": 885,
+    "name": "frukost"
+   },
+   {
+    "id": 861,
+    "name": "middag"
+   },
+   {
+    "id": 877,
+    "name": "EASY+PURE"
+   },
+   {
+    "id": 953,
+    "name": "förrätter"
+   },
+   {
+    "id": 917,
+    "name": "marmelader & geléer"
+   },
+   {
+    "id": 897,
+    "name": "tyska köket"
+   },
+   {
+    "id": 901,
+    "name": "franska köket"
+   },
+   {
+    "id": 913,
+    "name": "spanska köket"
+   },
+   {
+    "id": 905,
+    "name": "italienska köket"
+   },
+   {
+    "id": 921,
+    "name": "nyhet"
+   },
+   {
+    "id": 909,
+    "name": "polska köket"
+   },
+   {
+    "id": 961,
+    "name": "Mon Robot & Moi"
+   }
+  ],
+  "complexity": [
+   {
+    "id": 849,
+    "name": "lätt"
+   },
+   {
+    "id": 853,
+    "name": "medel"
+   },
+   {
+    "id": 857,
+    "name": "svårt"
+   }
+  ],
+  "ingredient_units": [
+   "g",
+   "tsk",
+   "msk",
+   "nypa",
+   "nypor",
+   "knivsudd",
+   "styck",
+   "ask",
+   "askar"
+  ],
+  "serving_units": [
+   "portion",
+   "portioner",
+   "dricksglas",
+   "syltburk",
+   "syltburkar",
+   "konserveringsburk",
+   "konserveringsburkar",
+   "styck",
+   "stycken",
+   "bit",
+   "bitar",
+   "flaska",
+   "flaskor"
+  ]
+ }
+}

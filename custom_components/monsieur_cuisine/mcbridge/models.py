@@ -10,9 +10,6 @@ from dataclasses import dataclass, field
 # Geräte-IDs von Tecpal (deviceTypeIds)
 DEVICE_MC_SMART = 13  # "MC3.0"
 
-# Schwierigkeit (complexityId) – bisher nur "Mittel" belegt
-COMPLEXITY_MEDIUM = 99
-
 # Grenzen aus dem Website-Editor
 MAX_TITLE = 80
 MAX_DESCRIPTION = 240
@@ -83,11 +80,12 @@ class Recipe:
     preparation_min: int = 0
     ready_in_min: int = 0
     category_ids: list[int] = field(default_factory=list)
-    complexity_id: int = COMPLEXITY_MEDIUM
+    complexity_id: int | None = None  # None = mittlere Stufe der Sprache
     nutrients_per_serving: dict[str, float] = field(default_factory=dict)  # kcal, protein, carbohydrate, fat
     groups: list[IngredientGroup] = field(default_factory=list)
     steps: list[Step] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+    image_url: str | None = None
 
     def preview(self) -> str:
         """Lesbare Vorschau, z. B. für die Kommandozeile."""

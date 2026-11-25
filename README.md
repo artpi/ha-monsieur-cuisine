@@ -16,13 +16,52 @@
   <a href="https://my.home-assistant.io/redirect/hacs_repository/?owner=MrVain74&repository=ha-monsieur-cuisine&category=integration"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open in HACS"></a>
 </p>
 
+> **Fork of [MrVain74/ha-monsieur-cuisine](https://github.com/MrVain74/ha-monsieur-cuisine).**
+> It adds configurable locales (tested with Poland), recipe actions with response data, tools for
+> voice assistants and MCP, and a sign-in without browser extension. See [Fork](#fork).
+
 > ⚠️ **Unofficial.** Not affiliated with Lidl, SilverCrest or Tecpal. Uses the undocumented
 > cloud interface of the Monsieur Cuisine app. May break at any time if the vendor changes things.
 > For your own account only, gentle polling (max. 1 request/second, every 15 minutes).
 
-**Status: Alpha (v0.4.12)** – tested with the *Monsieur Cuisine Smart* (MC3.0).
+**Status: Alpha (v0.5.0)** – tested with the *Monsieur Cuisine Smart* (MC3.0).
 
 👉 **Setup guide:** [`docs/SETUP.md`](docs/SETUP.md) · **How it works:** [`docs/HOW-IT-WORKS.md`](docs/HOW-IT-WORKS.md) · Deutsch: [Einrichtung](docs/EINRICHTUNG.md) · [Funktionsweise](docs/FUNKTIONSWEISE.md)
+
+## Fork
+
+Needs Home Assistant 2026.10 or newer.
+
+**Actions** (`monsieur_cuisine.*`, all return data): `search_recipes`, `get_recipe`,
+`list_own_recipes`, `get_own_recipe`, `export_recipe`, `get_recipe_options`, `create_recipe`,
+`update_recipe`, `set_recipe_image`, `publish_recipe_privately`, `send_recipe`, `list_favorites`,
+`add_favorite`, `remove_favorite`, `get_profile`, `get_shopping_list`, `get_meal_plan`, `get_status`.
+
+- New recipes are always drafts. A recipe reaches the machine after `set_recipe_image` and
+  `publish_recipe_privately`; it can not become a draft again. There is no deleting, no public
+  submission and no machine control.
+- `create_recipe` and `update_recipe` have `dry_run`. `export_recipe` returns a full backup, which
+  both accept as `payload`.
+- The programs `ramp`, `cooking_eggs` and `precleaning` survive updates but can not be created.
+
+**Voice and MCP:** the same actions form the LLM API *Monsieur Cuisine*. Select it for a conversation
+agent, or add Home Assistant's *Model Context Protocol Server* integration and connect to
+`/api/mcp/monsieur_cuisine` (needs an administrator's token) to expose these tools and nothing else.
+Addresses given by a language model must be on the public internet, local files are not readable.
+
+**Sign-in:** choose the locale, open the Lidl link in Chrome with the developer console open
+(*Preserve log* on) and paste the `lidl-com.monsieur-cuisine.companion://…` address from the console.
+No browser extension, and no unauthenticated callback endpoint in Home Assistant.
+
+**Fixed:** empty shopping list and planner outside Germany (the API filters them by the request
+locale), `send_recipe` crash, expired sessions that never asked for a new sign-in, updates that tried
+to turn published recipes into drafts.
+
+Data and facts taken from [monsieur-cuisine-cli](https://github.com/fopina/monsieur-cuisine-cli) (MIT,
+Copyright (c) 2024 Filipe Pina) and
+[Unofficial-Monsieur-Cuisine-MCP](https://github.com/pgreda/Unofficial-Monsieur-Cuisine-MCP) (Apache-2.0).
+
+After changing `actions.py`, run `tools/gen_services.py` (see its header).
 
 ## Screenshots
 
@@ -46,7 +85,7 @@
 | Sign-in (Lidl login directly in Home Assistant) | ✅ setup dialog |
 | **Live cooking status** (cooking state, mode, target temperature, speed, remaining time, recipe & step, preheating, scale) | ✅ via the cloud (gRPC push), decoded – for the MC Smart |
 | **Shopping list** as a to-do list, **weekly planner** as a calendar | ✅ read-only (ticking/adding still to come) |
-| Save recipe as “private” (shows up on the device) | ⏳ needs image upload – draft for now, add the picture on the website |
+| Save recipe as “private” (shows up on the device) | ✅ `set_recipe_image`, then `publish_recipe_privately` |
 
 ## Entities
 
@@ -118,10 +157,7 @@ Assistant – measured in Chrome, the redirect is **discarded silently** and the
 address appears nowhere, not even in the address bar. Only something that may
 read alongside the page can catch it, so there is **one** sign-in path:
 
-- **The browser helper:** a tiny add-on from
-  [`browser-helper/`](browser-helper/) catches the redirect and hands the code to
-  Home Assistant. The setup dialog then finishes on its own – not even a click.
-  The add-on may only read redirects from `accounts.lidl.com` and nothing else.
+- **No browser helper:** you paste the sign-in address yourself, see [Fork](#fork).
 
 Your e-mail, password and the captcha always stay between you and Lidl; the
 captcha is never bypassed.

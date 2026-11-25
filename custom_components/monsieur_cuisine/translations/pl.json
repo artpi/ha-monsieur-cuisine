@@ -1,0 +1,80 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Język przepisów",
+        "description": "**Nieoficjalne** – bez związku z Lidlem, SilverCrest ani Tecpal.\n\nOd języka zależy, które przepisy, lista zakupów i plan posiłków są widoczne. Wybierz ten sam co w urządzeniu.",
+        "data": {
+          "locale": "Język i kraj"
+        }
+      },
+      "login": {
+        "title": "Zaloguj się do Lidla",
+        "description": "1. Otwórz nową kartę w Chrome, otwórz konsolę programisty (⌥⌘J na Macu, Ctrl+Shift+J gdzie indziej) i w jej ustawieniach zaznacz *Preserve log*.\n2. Otwórz w tej karcie **[stronę logowania Lidla]({login_url})** i zaloguj się.\n3. Strona sprawia wtedy wrażenie zawieszonej. W konsoli pojawia się *Failed to launch 'lidl-com.monsieur-cuisine.companion://login/prod?…'*. Skopiuj ten adres i wklej go poniżej.\n\nAdres działa raz i tylko przez kilka minut.",
+        "data": {
+          "callback": "Adres zaczynający się od lidl-com.monsieur-cuisine.companion://"
+        }
+      }
+    },
+    "error": {
+      "invalid_callback": "We wklejonym tekście nie ma adresu logowania.",
+      "state_mismatch": "Ten adres pochodzi z innego logowania. Użyj linku z tego okna.",
+      "invalid_auth": "Lidl odrzucił logowanie. Otwórz link jeszcze raz i powtórz.",
+      "cannot_connect": "Brak połączenia z chmurą Monsieur Cuisine. Otwórz link jeszcze raz i powtórz."
+    },
+    "abort": {
+      "already_configured": "To konto jest już skonfigurowane.",
+      "reauth_successful": "Zalogowano ponownie – połączenie działa.",
+      "reauth_account_mismatch": "To logowanie należy do innego konta. Zaloguj się na konto użyte przy konfiguracji."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "cloud_connection": {
+        "name": "Połączenie z chmurą"
+      },
+      "preheat": {
+        "name": "Podgrzewanie"
+      },
+      "scale": {
+        "name": "Waga"
+      }
+    },
+    "sensor": {
+      "cook_state": {
+        "name": "Stan gotowania"
+      },
+      "device_mode": {
+        "name": "Tryb"
+      },
+      "target_temperature": {
+        "name": "Temperatura docelowa"
+      },
+      "speed": {
+        "name": "Prędkość"
+      },
+      "remaining_time": {
+        "name": "Pozostały czas"
+      },
+      "recipe": {
+        "name": "Przepis"
+      },
+      "step": {
+        "name": "Krok"
+      },
+      "own_recipes": {
+        "name": "Własne przepisy"
+      }
+    },
+    "todo": {
+      "shopping_list": {
+        "name": "Lista zakupów"
+      }
+    },
+    "calendar": {
+      "weekly_planner": {
+        "name": "Plan tygodnia"
+      }
+    }
+  }
+}

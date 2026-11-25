@@ -7,7 +7,8 @@ DOMAIN = "monsieur_cuisine"
 CONF_JWT = "jwt"
 CONF_USER_ID = "user_id"
 CONF_COMPANION_APP_ID = "companion_app_id"
-CONF_LIDL_REFRESH_TOKEN = "lidl_refresh_token"
+CONF_LIDL_REFRESH_TOKEN = "lidl_refresh_token"  # alt, wird nicht mehr gespeichert
+CONF_LOCALE = "locale"
 CONF_REFRESH_TOKEN = "refresh_token"  # alt (v1), nur zur Abwärtskompatibilität
 
 UPDATE_INTERVAL = timedelta(minutes=15)
@@ -37,22 +38,4 @@ LIVE_STALE_AFTER = timedelta(minutes=10)
 # aufgebaut wird.
 LIVE_WATCHDOG = timedelta(minutes=15)
 
-SERVICE_SEND_RECIPE = "send_recipe"
-ATTR_URL = "url"
-ATTR_RECIPE = "recipe"
-ATTR_RECIPE_ID = "recipe_id"
-ATTR_DRY_RUN = "dry_run"
-
 EVENT_RECIPE_SENT = f"{DOMAIN}_recipe_sent"
-
-# Login über den Browser-Helfer:
-# Die Empfangs-Adresse, an die der Helfer den `code` schickt.
-CALLBACK_PATH = f"/api/{DOMAIN}/callback"
-# Ablage für laufende Login-Vorgänge (flow_id -> Sicherheits-Token)
-DATA_FLOW_TOKENS = "flow_tokens"
-# Flow-IDs, bei denen der Abschluss-Schritt schon betreten wurde. Nötig, weil
-# Dialog und Empfangs-Adresse ihn beide aufrufen könnten: wer zuerst drin ist,
-# beansprucht ihn, der andere hält sich still raus.
-DATA_FLOW_FINISHING = "flow_finishing"
-# Merker, dass die Empfangs-Adresse (HTTP-View) registriert ist
-DATA_VIEW_REGISTERED = "view_registered"

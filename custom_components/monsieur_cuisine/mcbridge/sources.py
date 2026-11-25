@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 from typing import Any, Iterable
 
+from .locales import DEFAULT_LOCALE, options, word
 from .models import MAX_RECIPE_DESCRIPTION, Ingredient, IngredientGroup, Recipe
 from .translator import map_ingredient, parse_ingredient_line, translate_step
 
@@ -22,13 +23,13 @@ def _iso_minutes(v: str | None) -> int:
     return int(m.group(1) or 0) * 60 + int(m.group(2) or 0)
 
 
-def _servings(v: Any) -> tuple[int, str]:
+def _servings(v: Any, locale: str) -> tuple[int, str]:
     if isinstance(v, list):
         v = v[0] if v else ""
     m = re.match(r"\s*(\d+)\s*(.*)", str(v or ""))
     if not m:
-        return 4, "Portionen"
-    unit = m.group(2).strip() or "Portionen"
+        return 4, word(locale, "servings")
+    unit = m.group(2).strip() or word(locale, "servings")
     return int(m.group(1)), unit
 
 
@@ -49,9 +50,9 @@ def _instruction_texts(v: Any) -> Iterable[str]:
                 yield str(t)
 
 
-def from_schema_org(data: dict[str, Any]) -> Recipe:
+def from_schema_org(data: dict[str, Any], locale: str = DEFAULT_LOCALE) -> Recipe:
     """Baut ein Recipe aus einem schema.org/Recipe-Objekt (JSON-LD)."""
-    servings, unit = _servings(data.get("recipeYield"))
+    servings, unit = _servings(data.get("recipeYield"), locale)
     r = Recipe(
         title=str(data.get("name") or "Rezept")[:80],
         description=str(data.get("description") or "")[:MAX_RECIPE_DESCRIPTION],
@@ -60,12 +61,14 @@ def from_schema_org(data: dict[str, Any]) -> Recipe:
         preparation_min=_iso_minutes(data.get("prepTime")),
         ready_in_min=_iso_minutes(data.get("totalTime")) or _iso_minutes(data.get("cookTime")),
     )
+    r.image_url = _image_url(data.get("image"))
     r.groups.append(IngredientGroup(
-        name="Zutaten",
+        name=word(locale, "ingredients"),
         ingredients=[parse_ingredient_line(str(x)) for x in data.get("recipeIngredient") or []],
     ))
     for text in _instruction_texts(data.get("recipeInstructions")):
         r.steps.extend(translate_step(text, r.warnings))
+    _localize_units(r, locale)
     _nutrition(r, data.get("nutrition") or {})
     return r
 
@@ -92,11 +95,28 @@ def find_schema_recipe(html: str) -> dict[str, Any] | None:
     return None
 
 
-def from_html(html: str) -> Recipe:
+def from_html(html: str, locale: str = DEFAULT_LOCALE) -> Recipe:
     data = find_schema_recipe(html)
     if data is None:
-        raise ValueError("Kein schema.org-Rezept auf der Seite gefunden")
-    return from_schema_org(data)
+        raise ValueError("The page contains no schema.org recipe")
+    return from_schema_org(data, locale)
+
+
+def _image_url(v: Any) -> str | None:
+    if isinstance(v, list):
+        v = v[0] if v else None
+    if isinstance(v, dict):
+        v = v.get("url")
+    return v if isinstance(v, str) and v.startswith("http") else None
+
+
+def _localize_units(r: Recipe, locale: str) -> None:
+    """Units the locale's editor does not offer move into the ingredient name."""
+    allowed = options(locale)["ingredient_units"]
+    for group in r.groups:
+        for i in group.ingredients:
+            if i.unit and i.unit not in allowed:
+                i.name, i.unit = f"{i.name} ({i.unit})", ""
 
 
 def _nutrition(r: Recipe, n: dict[str, Any]) -> None:

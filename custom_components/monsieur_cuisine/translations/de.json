@@ -2,25 +2,30 @@
   "config": {
     "step": {
       "user": {
-        "title": "Browser-Helfer bereit?",
-        "description": "**Inoffiziell** – keine Verbindung zu Lidl, SilverCrest oder Tecpal.\n\nFür die Anmeldung braucht es einmalig den kleinen **Browser-Helfer**. Er fängt nach dem Login den Anmelde-Code ab und übergibt ihn automatisch – du musst nichts kopieren.\n\n➡️ **[Browser-Helfer herunterladen & installieren]({helper_link})** (kurze Anleitung dort, ca. 1 Min – nur beim ersten Mal).\n\n**Ist der Helfer installiert und aktiv?** Dann unten auf **Absenden** – danach öffnet sich die Lidl-Anmeldung."
+        "title": "Rezeptsprache",
+        "description": "**Inoffiziell** – keine Verbindung zu Lidl, SilverCrest oder Tecpal.\n\nDie Sprache bestimmt, welche Rezepte, Einkaufsliste und Wochenplanung sichtbar sind. Bitte dieselbe wie am Gerät wählen.",
+        "data": {
+          "locale": "Sprache und Land"
+        }
       },
       "login": {
         "title": "Bei Lidl anmelden",
-        "description": "Klick unten auf **Website öffnen** und melde dich bei Lidl an (E-Mail, Passwort und Captcha gibst du selbst ein).\n\nDer Browser-Helfer übergibt den Anmelde-Code danach automatisch – dieser Dialog schließt sich **von allein**."
-      },
-      "reauth_confirm": {
-        "title": "Erneut bei Lidl anmelden",
-        "description": "Die gespeicherte Sitzung gilt nicht mehr (z. B. nach einem Passwortwechsel oder längerer Pause). Eine einmalige neue Anmeldung bei Lidl stellt die Verbindung wieder her – dein Gerät und alle Einstellungen bleiben erhalten.\n\n**Browser-Helfer aktiv?** Dann unten auf **Absenden** – danach öffnet sich die Lidl-Anmeldung."
+        "description": "1. In Chrome einen neuen Tab und die Entwicklerkonsole öffnen (⌥⌘J am Mac, sonst Strg+Umschalt+J), dort *Preserve log* aktivieren.\n2. In diesem Tab die **[Lidl-Anmeldung]({login_url})** öffnen und anmelden.\n3. Danach scheint die Seite zu hängen. Die Konsole zeigt *Failed to launch 'lidl-com.monsieur-cuisine.companion://login/prod?…'*. Diese Adresse kopieren und unten einfügen.\n\nDie Adresse gilt einmal und nur wenige Minuten.",
+        "data": {
+          "callback": "Adresse, beginnend mit lidl-com.monsieur-cuisine.companion://"
+        }
       }
     },
+    "error": {
+      "invalid_callback": "Im eingefügten Text ist keine Anmeldeadresse.",
+      "state_mismatch": "Diese Adresse gehört zu einer anderen Anmeldung. Bitte den Link aus diesem Dialog benutzen.",
+      "invalid_auth": "Lidl hat die Anmeldung abgelehnt. Link erneut öffnen und wiederholen.",
+      "cannot_connect": "Die Monsieur-Cuisine-Cloud ist nicht erreichbar. Link erneut öffnen und wiederholen."
+    },
     "abort": {
-      "already_configured": "Dieses Konto ist bereits eingerichtet.",
-      "invalid_auth": "Anmeldung fehlgeschlagen. Bitte den Login erneut starten (der Code gilt nur kurz).",
-      "cannot_connect": "Verbindung zur Monsieur-Cuisine-Cloud fehlgeschlagen. Bitte später erneut versuchen.",
-      "no_url": "Home Assistant kennt seine eigene Adresse nicht. Bitte unter Einstellungen → System → Netzwerk eine URL hinterlegen.",
+      "already_configured": "Dieses Konto ist schon eingerichtet.",
       "reauth_successful": "Erneute Anmeldung erfolgreich – die Verbindung steht wieder.",
-      "reauth_account_mismatch": "Diese Anmeldung gehört zu einem anderen Konto. Bitte mit demselben Konto anmelden, das ursprünglich eingerichtet wurde."
+      "reauth_account_mismatch": "Diese Anmeldung gehört zu einem anderen Konto. Bitte mit dem ursprünglich eingerichteten Konto anmelden."
     }
   },
   "entity": {
@@ -69,30 +74,6 @@
     "calendar": {
       "weekly_planner": {
         "name": "Wochenplaner"
-      }
-    }
-  },
-  "services": {
-    "send_recipe": {
-      "name": "Rezept an Monsieur Cuisine senden",
-      "description": "Wandelt ein Rezept (Webseite mit schema.org-Daten oder JSON) in ein Monsieur-Cuisine-Rezept mit Maschinenschritten um und legt es im Konto an.",
-      "fields": {
-        "url": {
-          "name": "Rezept-URL",
-          "description": "Webseite mit Rezept (schema.org/Recipe, z. B. Chefkoch, Mealie)."
-        },
-        "recipe": {
-          "name": "Rezept (JSON)",
-          "description": "schema.org/Recipe-Objekt als Alternative zur URL."
-        },
-        "recipe_id": {
-          "name": "Bestehendes Rezept",
-          "description": "ID eines eigenen Rezepts, das überschrieben werden soll."
-        },
-        "dry_run": {
-          "name": "Nur Vorschau",
-          "description": "Nichts anlegen, nur die erkannten Schritte zurückgeben."
-        }
       }
     }
   }

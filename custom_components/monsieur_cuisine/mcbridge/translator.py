@@ -23,10 +23,12 @@ from .models import (
 
 # --- Einstellungs-Ketten ---------------------------------------------------
 
-_TIME = r"\d+(?:[.,]\d+)?\s*(?:Min(?:uten?)?\.?|Sek(?:unden?)?\.?|Std\.?)(?:\s*\d+\s*Sek(?:unden?)?\.?)?"
+_UNIT = (r"(?:Min(?:uten?|uty|utę|ut)?\.?|Sek(?:unden?|undy|undę|und)?\.?|Std\.?"
+         r"|godz(?:iny|inę|ina|in)?\.?|s\b)")
+_TIME = rf"\d+(?:[.,]\d+)?\s*{_UNIT}(?:\s*\d+\s*Sek(?:unden?|undy|undę|und)?\.?)?"
 _TEMP = r"\d{2,3}\s*°\s*C?|Varoma"
-_DIR = r"Linkslauf|↺|Rechtslauf"
-_SPEED = r"(?:Sanft)?[Rr]ührstufe|Stufe\s*\d{1,2}(?:[.,]5)?|Turbo"
+_DIR = r"Linkslauf|↺|Rechtslauf|obroty wsteczne|wsteczne obroty"
+_SPEED = r"(?:Sanft)?[Rr]ührstufe|(?:Stufe|obr\.|obroty|poziom|prędkość)\s*\d{1,2}(?:[.,]5)?|Turbo"
 _TOKEN = rf"(?:{_TIME}|{_TEMP}|{_DIR}|{_SPEED})"
 # Kette: mindestens ein Stufen-Token, verbunden mit "/"
 _CHAIN = re.compile(rf"{_TOKEN}(?:\s*/\s*{_TOKEN})*", re.IGNORECASE)
@@ -53,7 +55,7 @@ def parse_setting(chain: str, warnings: list[str] | None = None) -> MachineSetti
                 warnings.append(f"„{chain}“: {temp} °C über Gerätemaximum, auf {MAX_TEMPERATURE} °C begrenzt.")
                 temp = MAX_TEMPERATURE
             s.temperature = temp
-        elif low in ("linkslauf", "↺"):
+        elif low in ("linkslauf", "↺", "obroty wsteczne", "wsteczne obroty"):
             s.clockwise = False
         elif low == "rechtslauf":
             s.clockwise = True
@@ -64,7 +66,7 @@ def parse_setting(chain: str, warnings: list[str] | None = None) -> MachineSetti
             s.speed = 1
             has_speed = True
             warnings.append(f"„{chain}“: Rührstufe als Stufe 1 übernommen.")
-        elif low.startswith("stufe"):
+        elif re.match(r"(?:stufe|obr|poziom|prędkość)", low):
             raw = re.search(r"\d{1,2}(?:[.,]5)?", t).group().replace(",", ".")
             val = float(raw)
             if val != int(val):
@@ -79,15 +81,15 @@ def parse_setting(chain: str, warnings: list[str] | None = None) -> MachineSetti
 
 def _seconds(t: str) -> int:
     total = 0
-    for num, unit in re.findall(r"(\d+(?:[.,]\d+)?)\s*(Min|Sek|Std)", t, re.IGNORECASE):
+    for num, unit in re.findall(r"(\d+(?:[.,]\d+)?)\s*(Min|Sek|Std|godz|s)", t, re.IGNORECASE):
         n = float(num.replace(",", "."))
-        total += int(n * {"min": 60, "sek": 1, "std": 3600}[unit.lower()])
+        total += int(n * {"min": 60, "sek": 1, "s": 1, "std": 3600, "godz": 3600}[unit.lower()])
     return total
 
 
 # --- Sätze und Titel -------------------------------------------------------
 
-_ABBR = ["Sek.", "Min.", "Std.", "ca.", "z. B.", "evtl.", "ggf.", "bzw.", "Msp.", "Pck.", "Stk.", "EL.", "TL."]
+_ABBR = ["Sek.", "Min.", "Std.", "ca.", "z. B.", "evtl.", "ggf.", "bzw.", "obr.", "godz.", "Msp.", "Pck.", "Stk.", "EL.", "TL."]
 
 
 def _sentences(text: str) -> list[str]:
@@ -177,7 +179,7 @@ def translate_step(text: str, warnings: list[str]) -> list[Step]:
             return
         body = " ".join(pending)
         for i, chunk in enumerate(_chunks(body)):
-            title = make_title(chunk) + (" (Forts.)" if i else "")
+            title = make_title(chunk) + (" (…)" if i else "")
             steps.append(Step(title=title[:MAX_TITLE], description=chunk))
         pending.clear()
 

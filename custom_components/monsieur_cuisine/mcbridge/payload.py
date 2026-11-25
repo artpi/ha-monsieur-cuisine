@@ -7,6 +7,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from .authoring import STATUS_DRAFT, STATUS_PRIVATE, write_payload
+from .locales import DEFAULT_LOCALE, default_complexity, serving_unit, word
 from .models import (
     DEVICE_MC_SMART,
     MAX_RECIPE_DESCRIPTION,
@@ -16,9 +18,6 @@ from .models import (
     Recipe,
     Step,
 )
-
-STATUS_DRAFT = "draft"
-STATUS_PRIVATE = "private-publish"  # "Privat" – verlangt ein Rezeptbild
 
 _NUTRIENT_UNITS = {"calories": "kCal", "protein": "g", "carbohydrate": "g", "fat": "g"}
 
@@ -39,7 +38,8 @@ def _step_payload(step: Step) -> dict[str, Any]:
 
 def build_payload(recipe: Recipe, status: str = STATUS_DRAFT,
                   existing: dict[str, Any] | None = None,
-                  details_image: dict[str, Any] | None = None) -> dict[str, Any]:
+                  details_image: dict[str, Any] | None = None,
+                  locale: str = DEFAULT_LOCALE) -> dict[str, Any]:
     """Baut den Body für POST/PUT api/v3/auth/user/recipes.
 
     existing: zuletzt gelesenes Rezept (GET …/recipes/{id}); dessen IDs für
@@ -56,7 +56,7 @@ def build_payload(recipe: Recipe, status: str = STATUS_DRAFT,
             first_group_id = groups[0].get("id")
 
     groups_payload = []
-    for gi, g in enumerate(recipe.groups or [IngredientGroup(name="Zutaten")]):
+    for gi, g in enumerate(recipe.groups or [IngredientGroup(name=word(locale, "ingredients"))]):
         gid = first_group_id if gi == 0 else None
         groups_payload.append({
             "id": gid,
@@ -73,10 +73,10 @@ def build_payload(recipe: Recipe, status: str = STATUS_DRAFT,
         "id": ss_id,
         "isDefault": True,
         "amount": recipe.servings,
-        "unit": recipe.serving_unit,
+        "unit": serving_unit(locale, recipe.serving_unit),
         "instruction": "",
-        "preparationTime": recipe.preparation_min,
-        "readyInTime": recipe.ready_in_min,
+        "preparationTime": recipe.preparation_min or 1,
+        "readyInTime": recipe.ready_in_min or 1,
         "ingredientGroups": groups_payload,
         "steps": [_step_payload(s) for s in recipe.steps],
     }
@@ -84,11 +84,11 @@ def build_payload(recipe: Recipe, status: str = STATUS_DRAFT,
     payload: dict[str, Any] = {
         "status": status,
         "source": "member",
-        "languageLocale": "de-DE",
+        "languageLocale": locale,
         "deviceTypeIds": [DEVICE_MC_SMART],
         "title": recipe.title,
         "description": recipe.description[:MAX_RECIPE_DESCRIPTION],
-        "complexityId": recipe.complexity_id,
+        "complexityId": recipe.complexity_id or default_complexity(locale),
         "allowSocialSharing": False,
         "categoryIds": recipe.category_ids,
         "nutrients": [
@@ -99,8 +99,8 @@ def build_payload(recipe: Recipe, status: str = STATUS_DRAFT,
     }
     if details_image:
         payload["detailsImage"] = details_image
-    elif existing and existing.get("detailsImage"):
-        payload["detailsImage"] = existing["detailsImage"]
+    elif existing:
+        payload |= {k: v for k, v in write_payload(existing).items() if k in ("thumbnail", "detailsImage")}
     return payload
 
 
@@ -115,7 +115,7 @@ def recipe_from_api(data: dict[str, Any]) -> Recipe:
         preparation_min=ss.get("preparationTime") or 0,
         ready_in_min=ss.get("readyInTime") or 0,
         category_ids=[c["id"] for c in data.get("categories") or []],
-        complexity_id=(data.get("complexity") or {}).get("id") or 99,
+        complexity_id=(data.get("complexity") or {}).get("id"),
         nutrients_per_serving={n["name"]: n["amount"] for n in data.get("nutrients") or []},
     )
     for g in ss.get("ingredientGroups") or []:

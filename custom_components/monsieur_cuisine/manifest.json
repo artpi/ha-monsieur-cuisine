@@ -1,12 +1,19 @@
 {
   "domain": "monsieur_cuisine",
-  "name": "Monsieur Cuisine (inoffiziell)",
-  "codeowners": ["@MrVain74"],
+  "name": "Monsieur Cuisine (unofficial)",
+  "codeowners": [
+    "@artpi"
+  ],
   "config_flow": true,
-  "documentation": "https://github.com/MrVain74/ha-monsieur-cuisine",
+  "dependencies": [
+    "llm"
+  ],
+  "documentation": "https://github.com/artpi/ha-monsieur-cuisine",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/MrVain74/ha-monsieur-cuisine/issues",
-  "requirements": ["grpcio>=1.60.0"],
-  "version": "0.4.13"
+  "issue_tracker": "https://github.com/artpi/ha-monsieur-cuisine/issues",
+  "requirements": [
+    "grpcio>=1.60.0"
+  ],
+  "version": "0.5.0"
 }

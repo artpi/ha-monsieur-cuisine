@@ -2,23 +2,28 @@
   "config": {
     "step": {
       "user": {
-        "title": "Browser helper ready?",
-        "description": "**Unofficial** – not affiliated with Lidl, SilverCrest or Tecpal.\n\nSigning in needs the small **browser helper**, once. It catches the sign-in code after the login and hands it over automatically – nothing to copy.\n\n➡️ **[Download & install the browser helper]({helper_link})** (short guide there, about a minute – first time only).\n\n**Is the helper installed and enabled?** Then press **Submit** below – the Lidl sign-in page opens next."
+        "title": "Recipe language",
+        "description": "**Unofficial** – not affiliated with Lidl, SilverCrest or Tecpal.\n\nThe language decides which recipes, shopping list and meal plan you see. Choose the one used on your machine.",
+        "data": {
+          "locale": "Language and country"
+        }
       },
       "login": {
         "title": "Sign in with Lidl",
-        "description": "Click **Open website** below and sign in with Lidl (e-mail, password and captcha are up to you).\n\nThe browser helper then hands the sign-in code over automatically – this dialog closes **on its own**."
-      },
-      "reauth_confirm": {
-        "title": "Sign in with Lidl again",
-        "description": "The stored session is no longer valid (e.g. after a password change or a long break). Signing in with Lidl once more restores the connection – your device and all settings stay in place.\n\n**Browser helper active?** Then press **Submit** below – the Lidl sign-in page opens next."
+        "description": "1. Open a new tab in Chrome, open the developer console (⌥⌘J on a Mac, Ctrl+Shift+J elsewhere) and tick *Preserve log* in its settings.\n2. In that tab open the **[Lidl sign-in page]({login_url})** and sign in.\n3. The page then appears to hang. The console shows *Failed to launch 'lidl-com.monsieur-cuisine.companion://login/prod?…'*. Copy that address and paste it below.\n\nThe address works once and only for a few minutes.",
+        "data": {
+          "callback": "Address starting with lidl-com.monsieur-cuisine.companion://"
+        }
       }
+    },
+    "error": {
+      "invalid_callback": "No sign-in address was found in the pasted text.",
+      "state_mismatch": "This address belongs to another sign-in. Use the link in this dialog.",
+      "invalid_auth": "Lidl rejected the sign-in. Open the link again and repeat.",
+      "cannot_connect": "Could not reach the Monsieur Cuisine cloud. Open the link again and repeat."
     },
     "abort": {
       "already_configured": "This account is already configured.",
-      "invalid_auth": "Sign-in failed. Please start the login again (the code is only valid briefly).",
-      "cannot_connect": "Could not reach the Monsieur Cuisine cloud. Please try again later.",
-      "no_url": "Home Assistant does not know its own address. Please set a URL under Settings → System → Network.",
       "reauth_successful": "Re-authentication successful – the connection is back.",
       "reauth_account_mismatch": "This sign-in belongs to a different account. Please sign in with the same account that was set up originally."
     }
@@ -73,27 +78,331 @@
     }
   },
   "services": {
-    "send_recipe": {
-      "name": "Send recipe to Monsieur Cuisine",
-      "description": "Converts a recipe (web page with schema.org data or JSON) into a Monsieur Cuisine recipe with machine steps and creates it in your account.",
+    "search_recipes": {
+      "name": "Search recipes",
+      "description": "Search the public Monsieur Cuisine recipe catalogue in the account's language.",
       "fields": {
-        "url": {
-          "name": "Recipe URL",
-          "description": "Web page with a recipe (schema.org/Recipe, e.g. Chefkoch, Mealie)."
+        "query": {
+          "name": "Query",
+          "description": "Search words, e.g. zupa pomidorowa"
         },
-        "recipe": {
-          "name": "Recipe (JSON)",
-          "description": "schema.org/Recipe object as an alternative to the URL."
+        "smart_only": {
+          "name": "Smart only",
+          "description": "Only recipes made for the Monsieur Cuisine Smart"
         },
-        "recipe_id": {
-          "name": "Existing recipe",
-          "description": "ID of one of your recipes to overwrite."
-        },
-        "dry_run": {
-          "name": "Preview only",
-          "description": "Do not create anything, just return the detected steps."
+        "page": {
+          "name": "Page",
+          "description": "Result page, starting at 1"
         }
       }
+    },
+    "get_recipe": {
+      "name": "Get a recipe",
+      "description": "Ingredients and steps of a public recipe. Give recipe_id or url.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "Recipe ID, e.g. from search_recipes"
+        },
+        "url": {
+          "name": "Url",
+          "description": "Address of the recipe page on monsieur-cuisine.com"
+        }
+      }
+    },
+    "list_own_recipes": {
+      "name": "List own recipes",
+      "description": "Recipes written in this account.",
+      "fields": {
+        "query": {
+          "name": "Query",
+          "description": "Filter by words"
+        },
+        "status": {
+          "name": "Status",
+          "description": "Filter by status"
+        },
+        "page": {
+          "name": "Page",
+          "description": "Result page, starting at 1"
+        }
+      }
+    },
+    "get_own_recipe": {
+      "name": "Get an own recipe",
+      "description": "Ingredients and steps of one of your own recipes.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "ID of one of your own recipes"
+        }
+      }
+    },
+    "export_recipe": {
+      "name": "Export an own recipe",
+      "description": "Complete backup of one of your own recipes, accepted by create_recipe and update_recipe.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "ID of one of your own recipes"
+        }
+      }
+    },
+    "get_recipe_options": {
+      "name": "Recipe options",
+      "description": "Valid categories, complexity levels, units and machine programs for writing recipes."
+    },
+    "create_recipe": {
+      "name": "Create a recipe",
+      "description": "Create a new own recipe as a private draft. It reaches the machine only after set_recipe_image and publish_recipe_privately.",
+      "fields": {
+        "title": {
+          "name": "Title",
+          "description": "Recipe title (at most 80 characters)"
+        },
+        "description": {
+          "name": "Description",
+          "description": "Short description (at most 240 characters)"
+        },
+        "servings": {
+          "name": "Servings",
+          "description": "Number of servings"
+        },
+        "serving_unit": {
+          "name": "Serving unit",
+          "description": "One of serving_units from get_recipe_options"
+        },
+        "preparation_minutes": {
+          "name": "Preparation minutes",
+          "description": "Working time in minutes"
+        },
+        "ready_minutes": {
+          "name": "Ready minutes",
+          "description": "Total time in minutes"
+        },
+        "complexity_id": {
+          "name": "Complexity id",
+          "description": "ID from get_recipe_options"
+        },
+        "category_ids": {
+          "name": "Category ids",
+          "description": "IDs from get_recipe_options"
+        },
+        "calories": {
+          "name": "Calories",
+          "description": "kcal per serving"
+        },
+        "protein": {
+          "name": "Protein",
+          "description": "Grams per serving"
+        },
+        "carbohydrate": {
+          "name": "Carbohydrate",
+          "description": "Grams per serving"
+        },
+        "fat": {
+          "name": "Fat",
+          "description": "Grams per serving"
+        },
+        "ingredients": {
+          "name": "Ingredients",
+          "description": "All ingredients in order (replaces the existing ones)"
+        },
+        "steps": {
+          "name": "Steps",
+          "description": "All steps in order (replaces the existing ones)"
+        },
+        "dry_run": {
+          "name": "Dry run",
+          "description": "Only return what would be sent, change nothing"
+        },
+        "payload": {
+          "name": "Payload",
+          "description": "Backup from export_recipe, instead of the single fields"
+        }
+      }
+    },
+    "update_recipe": {
+      "name": "Update an own recipe",
+      "description": "Change fields of one of your own recipes; everything not given stays as it is.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "ID of one of your own recipes"
+        },
+        "title": {
+          "name": "Title",
+          "description": "Recipe title (at most 80 characters)"
+        },
+        "description": {
+          "name": "Description",
+          "description": "Short description (at most 240 characters)"
+        },
+        "servings": {
+          "name": "Servings",
+          "description": "Number of servings"
+        },
+        "serving_unit": {
+          "name": "Serving unit",
+          "description": "One of serving_units from get_recipe_options"
+        },
+        "preparation_minutes": {
+          "name": "Preparation minutes",
+          "description": "Working time in minutes"
+        },
+        "ready_minutes": {
+          "name": "Ready minutes",
+          "description": "Total time in minutes"
+        },
+        "complexity_id": {
+          "name": "Complexity id",
+          "description": "ID from get_recipe_options"
+        },
+        "category_ids": {
+          "name": "Category ids",
+          "description": "IDs from get_recipe_options"
+        },
+        "calories": {
+          "name": "Calories",
+          "description": "kcal per serving"
+        },
+        "protein": {
+          "name": "Protein",
+          "description": "Grams per serving"
+        },
+        "carbohydrate": {
+          "name": "Carbohydrate",
+          "description": "Grams per serving"
+        },
+        "fat": {
+          "name": "Fat",
+          "description": "Grams per serving"
+        },
+        "ingredients": {
+          "name": "Ingredients",
+          "description": "All ingredients in order (replaces the existing ones)"
+        },
+        "steps": {
+          "name": "Steps",
+          "description": "All steps in order (replaces the existing ones)"
+        },
+        "dry_run": {
+          "name": "Dry run",
+          "description": "Only return what would be sent, change nothing"
+        },
+        "payload": {
+          "name": "Payload",
+          "description": "Backup from export_recipe, instead of the single fields"
+        }
+      }
+    },
+    "set_recipe_image": {
+      "name": "Set the recipe picture",
+      "description": "Upload a JPEG, PNG or WebP picture and use it as the picture of one of your own recipes.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "ID of one of your own recipes"
+        },
+        "image_url": {
+          "name": "Image url",
+          "description": "Public address of the picture"
+        },
+        "ai_generated": {
+          "name": "Ai generated",
+          "description": "Mark the picture as AI-generated"
+        },
+        "image_path": {
+          "name": "Image path",
+          "description": "File Home Assistant may read, instead of image_url"
+        }
+      }
+    },
+    "publish_recipe_privately": {
+      "name": "Publish a recipe privately",
+      "description": "Make one of your own drafts visible on your machine, only for this account. Needs a picture, categories, ingredients and steps. It can not become a draft again, so confirm with the user first.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "ID of one of your own recipes"
+        }
+      }
+    },
+    "send_recipe": {
+      "name": "Import a recipe",
+      "description": "Convert a recipe web page (schema.org) into an own draft with machine steps. Use dry_run first and check the steps.",
+      "fields": {
+        "url": {
+          "name": "Url",
+          "description": "Public recipe page"
+        },
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "Own recipe to overwrite instead of creating a new one"
+        },
+        "dry_run": {
+          "name": "Dry run",
+          "description": "Only return what would be sent, change nothing"
+        },
+        "recipe": {
+          "name": "Recipe",
+          "description": "schema.org/Recipe object instead of url"
+        }
+      }
+    },
+    "list_favorites": {
+      "name": "List favourites",
+      "description": "Favourite recipes of the account.",
+      "fields": {
+        "page": {
+          "name": "Page",
+          "description": "Result page, starting at 1"
+        }
+      }
+    },
+    "add_favorite": {
+      "name": "Add a favourite",
+      "description": "Add a public recipe to the favourites. Give recipe_id or url.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "Recipe ID, e.g. from search_recipes"
+        },
+        "url": {
+          "name": "Url",
+          "description": "Address of the recipe page on monsieur-cuisine.com"
+        }
+      }
+    },
+    "remove_favorite": {
+      "name": "Remove a favourite",
+      "description": "Remove a recipe from the favourites. Give recipe_id or url.",
+      "fields": {
+        "recipe_id": {
+          "name": "Recipe id",
+          "description": "Recipe ID, e.g. from search_recipes"
+        },
+        "url": {
+          "name": "Url",
+          "description": "Address of the recipe page on monsieur-cuisine.com"
+        }
+      }
+    },
+    "get_profile": {
+      "name": "Get the profile",
+      "description": "Name and e-mail of the Monsieur Cuisine account."
+    },
+    "get_shopping_list": {
+      "name": "Get the shopping list",
+      "description": "Shopping list of the account."
+    },
+    "get_meal_plan": {
+      "name": "Get the meal plan",
+      "description": "Recipes planned for the next 30 days."
+    },
+    "get_status": {
+      "name": "Get the cooking status",
+      "description": "What the machine is doing right now."
     }
   }
 }

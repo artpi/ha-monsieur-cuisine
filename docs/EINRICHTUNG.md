@@ -1,5 +1,7 @@
 # Einrichtung – Monsieur Cuisine für Home Assistant (Alpha)
 
+> **Fork: Den unten beschriebenen Browser-Helfer gibt es nicht mehr. Zur Anmeldung siehe „Fork" in der README.**
+
 🌐 [English](SETUP.md) · **Deutsch**
 
 > **Inoffiziell.** Keine Verbindung zu Lidl, SilverCrest oder Tecpal. Nutzt die nicht
