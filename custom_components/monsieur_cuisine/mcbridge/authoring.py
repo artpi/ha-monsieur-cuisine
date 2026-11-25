@@ -214,6 +214,7 @@ def write_payload(recipe: dict[str, Any]) -> dict[str, Any]:
 def recipe_summary(r: dict[str, Any]) -> dict[str, Any]:
     """A catalogue, favourite or own recipe in a list."""
     complexity = r.get("complexity")
+    image = r.get("thumbnail") or r.get("detailsImage") or {}
     out = {
         "id": r.get("id"), "name": r.get("name") or r.get("title"), "status": r.get("status"),
         "url": r.get("url"), "source": r.get("source"),
@@ -225,6 +226,7 @@ def recipe_summary(r: dict[str, Any]) -> dict[str, Any]:
         "devices": [d.get("code") or d.get("name") if isinstance(d, dict) else d
                     for d in r.get("deviceTypes") or []],
         "updated": r.get("lastUpdated") or r.get("updatedAt"),
+        "image_url": image.get("landscape") or (image.get("landscapeMedia") or {}).get("url"),
     }
     return {k: v for k, v in out.items() if v not in (None, [])}
 
@@ -249,7 +251,8 @@ def recipe_details(r: dict[str, Any]) -> dict[str, Any]:
     out["description"] = r.get("description")
     out["hints"] = r.get("hintsAndTips")
     image = (r.get("detailsImage") or {})
-    out["image_url"] = image.get("landscape") or (image.get("landscapeMedia") or {}).get("url")
+    out["image_url"] = (image.get("landscape") or (image.get("landscapeMedia") or {}).get("url")
+                        or out.get("image_url"))
     out["nutrients_per_serving"] = {n["name"]: f"{n['amount']} {n['unit']}" for n in r.get("nutrients") or []}
     sizes = []
     for size in r.get("servingSizes") or []:

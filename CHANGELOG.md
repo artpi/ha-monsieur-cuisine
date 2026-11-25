@@ -4,6 +4,12 @@ All notable changes to this integration. Format based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Unofficial – not
 affiliated with Lidl, SilverCrest or Tecpal.
 
+## [0.5.1] – 2026-11-25 (fork)
+### Added
+- Recipe lists contain the address of the picture.
+### Fixed
+- The own recipes sensor counted trashed recipes.
+
 ## [0.5.0] – 2026-11-25 (fork)
 ### Added
 - Configurable locale (18 locales, Polish translation and step translator).
