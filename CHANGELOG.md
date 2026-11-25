@@ -4,6 +4,11 @@ All notable changes to this integration. Format based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Unofficial – not
 affiliated with Lidl, SilverCrest or Tecpal.
 
+## [0.5.2] – 2026-11-25 (fork)
+### Changed
+- The tools for language models carry the name of the config entry; rename the
+  entry to what you call the machine.
+
 ## [0.5.1] – 2026-11-25 (fork)
 ### Added
 - Recipe lists contain the address of the picture.

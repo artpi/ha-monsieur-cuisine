@@ -117,4 +117,4 @@ class McConfigFlow(ConfigFlow, domain=DOMAIN):
             self._abort_if_unique_id_mismatch(reason="reauth_account_mismatch")
             return self.async_update_reload_and_abort(self._get_reauth_entry(), data_updates=data)
         self._abort_if_unique_id_configured()
-        return self.async_create_entry(title=user.get("displayName") or "Monsieur Cuisine", data=data)
+        return self.async_create_entry(title="Monsieur Cuisine", data=data)
