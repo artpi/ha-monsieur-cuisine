@@ -4,6 +4,13 @@ All notable changes to this integration. Format based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Unofficial – not
 affiliated with Lidl, SilverCrest or Tecpal.
 
+## [0.5.3] – 2026-11-26 (fork)
+### Changed
+- The descriptions of `create_recipe` and `update_recipe` say how to write steps
+  that can be cooked from the machine's screen, so every MCP client sees them,
+  not only the voice assistant. `update_recipe` says that ingredients and steps
+  replace the whole list.
+
 ## [0.5.2] – 2026-11-25 (fork)
 ### Changed
 - The tools for language models carry the name of the config entry; rename the

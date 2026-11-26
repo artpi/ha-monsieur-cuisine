@@ -8,6 +8,8 @@ sys.path.append(str(Path(__file__).resolve().parents[1] / "custom_components" / 
 
 from mcbridge import build_payload, from_schema_org  # noqa: E402
 from mcbridge.authoring import (  # noqa: E402
+    PROGRAMS,
+    STEP_RULES,
     apply_fields,
     new_payload,
     recipe_details,
@@ -121,3 +123,12 @@ def test_locale_for():
     assert locale_for("en", "PL") == "pl-PL"
     assert locale_for("en-GB", None) == "en-US"
     assert locale_for(None, None) == "de-DE"
+
+
+def test_step_rules_name_real_fields_and_stay_short():
+    # Sent with create_recipe and update_recipe on every MCP session.
+    assert "scale" in PROGRAMS and "weight_grams" in PROGRAMS["scale"]
+    assert "roasting" in PROGRAMS
+    for word in ("scale", "weight_grams", "grams", "measuring cup", "roasting", "fat", "title"):
+        assert word in STEP_RULES
+    assert len(STEP_RULES) < 560

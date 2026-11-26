@@ -18,6 +18,18 @@ STATUS_PRIVATE = "private-publish"
 # Every status of an own recipe except the trash.
 OWN_STATUSES = ("draft", "pending", "private-publish", "publish", "rejected")
 
+# How steps must be written to be cookable from the machine's screen. Part of
+# the tool descriptions, because MCP clients do not load the LLM API prompt.
+STEP_RULES = (
+    "Steps are cooked from the machine's screen: every item added to the jug is its own step "
+    "with its amount in the text (only spices may go together); weigh what goes into the jug "
+    "with program scale and weight_grams, water too (in grams, there is no ml); scraping the "
+    "walls, taking off or putting back the measuring cup, mixing in a bowl and waiting are "
+    "steps of their own; for frying (program roasting) the fat goes in first, at the start "
+    "with what is fried, e.g. oil into the empty jug before the onion; give every step a "
+    "short title."
+)
+
 # program -> allowed step settings
 PROGRAMS: dict[str, tuple[str, ...]] = {
     "customized": ("temperature", "speed", "time_seconds", "reverse"),

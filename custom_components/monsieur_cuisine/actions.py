@@ -33,6 +33,7 @@ from .mcbridge.authoring import (
     PROGRAMS,
     STATUS_DRAFT,
     STATUS_PRIVATE,
+    STEP_RULES,
     apply_fields,
     image_ref,
     new_payload,
@@ -393,8 +394,8 @@ _INGREDIENT = vol.Schema({
     _opt("group", "Heading of the ingredient group, e.g. the sauce"): str,
 })
 _STEP = vol.Schema({
-    _req("text", "What to do in this step (at most 240 characters)"): vol.All(str, vol.Length(max=240)),
-    _opt("title", "Short heading (at most 80 characters)"): vol.All(str, vol.Length(max=80)),
+    _req("text", "What to do, with the amount of what is added (at most 240 characters)"): vol.All(str, vol.Length(max=240)),
+    _opt("title", "Short heading (at most 80 characters); without one the screen shows only the number"): vol.All(str, vol.Length(max=80)),
     _opt("program", "Machine program; leave out for a manual step"): vol.In(list(PROGRAMS)),
     _opt("temperature", "°C, up to 130"): vol.All(vol.Coerce(int), vol.Range(min=0, max=130)),
     _opt("speed", "Speed 0-10"): vol.All(vol.Coerce(int), vol.Range(min=0, max=10)),
@@ -443,10 +444,12 @@ ACTIONS = [
            {}, _options, read_only=True),
     Action("create_recipe", "Create a recipe",
            "Create a new own recipe as a private draft. It reaches the machine only after "
-           "set_recipe_image and publish_recipe_privately.",
+           "set_recipe_image and publish_recipe_privately. " + STEP_RULES,
            {**_FIELDS, **_DRY_RUN}, _create, admin_schema=_PAYLOAD),
     Action("update_recipe", "Update an own recipe",
-           "Change fields of one of your own recipes; everything not given stays as it is.",
+           "Change fields of one of your own recipes; fields not given stay as they are, but ingredients "
+           "and steps replace the whole list, so send all of them. Read the recipe with get_own_recipe "
+           "first, the user may have changed it in the app. " + STEP_RULES,
            {**_OWN_ID, **_FIELDS, **_DRY_RUN}, _update, destructive=True, admin_schema=_PAYLOAD),
     Action("set_recipe_image", "Set the recipe picture",
            "Upload a JPEG, PNG or WebP picture and use it as the picture of one of your own recipes.",
